@@ -1,20 +1,80 @@
 import React, { Component } from 'react';
-import './Home.css';
-import HeroImage from '../elements/HeroImage/HeroImage';
-import SearchBar from '../elements/SearchBar/SearchBar';
+import {
+  API_URL,
+  API_KEY,
+  LANG,
+  IMAGE_BASE_URL,
+  BACKDROP_SIZE,
+  POSTER_SIZE
+} from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
-import MovieThumb from '../elements/MovieThumb/MovieThumb';
+import HeroImage from '../elements/HeroImage/HeroImage';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
+import MovieThumb from '../elements/MovieThumb/MovieThumb';
+import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
+import './Home.css';
+
 class Home extends Component {
-  state = {};
+  state = {
+    movies: [],
+    heroImage: null,
+    loading: false,
+    currentPage: 0,
+    totalPages: 0,
+    searchTerm: ''
+  };
+
+  componentDidMount() {
+    this.setState({ loading: true });
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=${LANG}&page=1`;
+    this.fetchItems(endpoint);
+  }
+
+  loadMoreItems = () => {
+    let endpoint = '';
+    this.setState({ loading: true });
+    if (this.state.searchTerm === '') {
+      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=${LANG}&page=${this
+        .state.currentPage + 1}`;
+    } else {
+      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=${LANG}&query=${
+        this.state.searchTerm
+      }&page=${this.state.currentPage + 1}`;
+    }
+    this.fetchItems(endpoint);
+  };
+
+  fetchItems = endpoint => {
+    fetch(endpoint)
+      .then(result => result.json())
+      .then(result => {
+        this.setState({
+          movies: [...this.state.movies, ...result.results],
+          heroImage: this.state.heroImage || result.results[0],
+          loading: false,
+          currentPage: result.page,
+          totalPages: result.total_pages
+        });
+      });
+  };
 
   render() {
     return (
       <div className='rmdb-home'>
-        <HeroImage />
-        <SearchBar />
+        {this.state.heroImage ? (
+          <div>
+            <HeroImage
+              image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${
+                this.state.heroImage.backdrop_path
+              }`}
+              title={this.state.heroImage.original_title}
+              text={this.state.heroImage.overview}
+            />
+            <SearchBar />
+          </div>
+        ) : null}
         <FourColGrid />
         <Spinner />
         <LoadMoreBtn />
