@@ -56,7 +56,7 @@ class Movie extends Component {
       <div className='rmdb-movie'>
         {movie && (
           <div>
-            <Navigation movie={movie} />
+            <Navigation title={movie.title} />
             <MovieInfo movie={movie} directors={directors} />
             <MovieInfoBar movie={movie} />
           </div>
