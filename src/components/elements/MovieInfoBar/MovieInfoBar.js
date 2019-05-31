@@ -3,14 +3,14 @@ import FontAwesome from 'react-fontawesome';
 import { calcTime, convertMoney } from '../../../helpers';
 import './MovieInfoBar.css';
 
-const MovieInfoBar = ({ time, budget, revenue }) => {
+const MovieInfoBar = ({ movie: { runtime, budget, revenue } }) => {
   return (
     <div className='rmdb-movieinfobar'>
       <div className='rmdb-movieinfobar-content'>
         <div className='rmdb-movieinfobar-col'>
           <FontAwesome className='fa-time' name='clock-o' size='2x' />
           <span className='rmdb-movieinfobar-info'>
-            Running time: {calcTime(time)}
+            Running time: {calcTime(runtime)}
           </span>
         </div>
         <div className='rmdb-movieinfobar-col'>

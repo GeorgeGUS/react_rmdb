@@ -28,7 +28,6 @@ class Movie extends Component {
     fetch(endpoint)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         if (res.status_code) {
           this.setState({ loading: false });
         } else {
@@ -53,18 +52,13 @@ class Movie extends Component {
 
   render() {
     const { movie, directors, actors, loading } = this.state;
-    const { location } = this.props;
     return (
       <div className='rmdb-movie'>
         {movie && (
           <div>
-            <Navigation movie={location.movieName} />
+            <Navigation movie={movie} />
             <MovieInfo movie={movie} directors={directors} />
-            <MovieInfoBar
-              time={movie.runtime}
-              budget={movie.budget}
-              revenue={movie.revenue}
-            />
+            <MovieInfoBar movie={movie} />
           </div>
         )}
         {actors && (
