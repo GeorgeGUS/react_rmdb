@@ -33,7 +33,6 @@ class Home extends Component {
   }
 
   searchItems = searchTerm => {
-    console.log(searchTerm);
     let endpoint = '';
     this.setState({
       movies: [],
@@ -77,23 +76,50 @@ class Home extends Component {
   };
 
   render() {
+    const {
+      loading,
+      searchTerm,
+      movies,
+      heroImage,
+      currentPage,
+      totalPages
+    } = this.state;
+    const gridHeader = searchTerm ? 'Search Result' : 'Popular Movies';
     return (
       <div className='rmdb-home'>
-        {this.state.heroImage ? (
+        {heroImage && (
           <div>
             <HeroImage
               image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${
-                this.state.heroImage.backdrop_path
+                heroImage.backdrop_path
               }`}
-              title={this.state.heroImage.original_title}
-              text={this.state.heroImage.overview}
+              title={heroImage.original_title}
+              text={heroImage.overview}
             />
             <SearchBar callback={this.searchItems} />
           </div>
-        ) : null}
-        <FourColGrid />
-        <Spinner />
-        <LoadMoreBtn />
+        )}
+        <div className='rmdb-home-grid'>
+          <FourColGrid header={gridHeader} loading={loading}>
+            {movies.map(el => (
+              <MovieThumb
+                key={el.id}
+                clickable
+                image={
+                  el.poster_path
+                    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
+                    : './images/no_image.jpg'
+                }
+                movieId={el.id}
+                movieName={el.original_title}
+              />
+            ))}
+          </FourColGrid>
+          {loading && <Spinner />}
+          {currentPage < totalPages && !loading && (
+            <LoadMoreBtn text='Load More' onClick={this.loadMoreItems} />
+          )}
+        </div>
       </div>
     );
   }
