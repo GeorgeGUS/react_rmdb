@@ -72,7 +72,8 @@ class Home extends Component {
           currentPage: result.page,
           totalPages: result.total_pages
         });
-      });
+      })
+      .catch(err => console.error('Error:', err));
   };
 
   render() {
