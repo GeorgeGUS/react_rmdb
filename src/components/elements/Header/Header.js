@@ -9,13 +9,13 @@ const Header = () => {
         <Link to='/'>
           <img
             className='rmdb-logo'
-            src='./images/reactMovie_logo.png'
+            src={`${process.env.PUBLIC_URL}/images/reactMovie_logo.png`}
             alt='rmdb-logo'
           />
         </Link>
         <img
           className='rmdb-tmdb-logo'
-          src='./images/tmdb_logo.png'
+          src={`${process.env.PUBLIC_URL}/images/tmdb_logo.png`}
           alt='tmdb-logo'
         />
       </div>

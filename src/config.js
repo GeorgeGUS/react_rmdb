@@ -9,6 +9,7 @@ const API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335';
 // http://image.tmdb.org/t/p/w780/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg
 
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
+const NO_IMAGE_URL = `${process.env.PUBLIC_URL}/images/no_image.jpg`;
 
 //Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';
@@ -19,4 +20,12 @@ const POSTER_SIZE = 'w500';
 // const LANG = 'ru-RU';
 const LANG = 'en-US';
 
-export { API_URL, API_KEY, LANG, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE };
+export {
+  API_URL,
+  API_KEY,
+  LANG,
+  IMAGE_BASE_URL,
+  NO_IMAGE_URL,
+  BACKDROP_SIZE,
+  POSTER_SIZE
+};

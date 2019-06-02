@@ -1,5 +1,10 @@
 import React from 'react';
-import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from '../../../config';
+import {
+  IMAGE_BASE_URL,
+  NO_IMAGE_URL,
+  POSTER_SIZE,
+  BACKDROP_SIZE
+} from '../../../config';
 import FontAwesome from 'react-fontawesome';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import './MovieInfo.css';
@@ -20,7 +25,7 @@ const MovieInfo = ({ movie, directors = [] }) => {
             image={
               movie.poster_path
                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-                : './images/no_image.jpg'
+                : NO_IMAGE_URL
             }
           />
         </div>

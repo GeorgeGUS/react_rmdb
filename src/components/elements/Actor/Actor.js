@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMAGE_BASE_URL } from '../../../config';
+import { IMAGE_BASE_URL, NO_IMAGE_URL } from '../../../config';
 import './Actor.css';
 
 const POSTER_SIZE = 'w154';
@@ -10,7 +10,7 @@ const Actor = ({ actor }) => {
         src={
           actor.profile_path
             ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-            : './images/no_image.jpg'
+            : NO_IMAGE_URL
         }
         alt='actorthumb'
       />

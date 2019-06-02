@@ -4,6 +4,7 @@ import {
   API_KEY,
   LANG,
   IMAGE_BASE_URL,
+  NO_IMAGE_URL,
   BACKDROP_SIZE,
   POSTER_SIZE
 } from '../../config';
@@ -121,7 +122,7 @@ class Home extends Component {
                 image={
                   el.poster_path
                     ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
-                    : './images/no_image.jpg'
+                    : NO_IMAGE_URL
                 }
                 movieId={el.id}
                 movieName={el.title}
