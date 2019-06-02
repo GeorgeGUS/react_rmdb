@@ -16,6 +16,13 @@ class Movie extends Component {
   };
 
   componentDidMount() {
+    const storedState = localStorage.getItem(
+      `${this.props.match.params.movieId}`
+    );
+    if (storedState) {
+      this.setState({ ...JSON.parse(storedState) });
+      return;
+    }
     this.setState({ loading: true });
     // Fisrt fetch the movie...
     const endpoint = `${API_URL}movie/${
@@ -42,7 +49,19 @@ class Movie extends Component {
                 const directors = res.crew.filter(
                   member => member.job === 'Director'
                 );
-                this.setState({ actors: res.cast, directors, loading: false });
+                this.setState(
+                  {
+                    actors: res.cast,
+                    directors,
+                    loading: false
+                  },
+                  () => {
+                    localStorage.setItem(
+                      `${this.props.match.params.movieId}`,
+                      JSON.stringify(this.state)
+                    );
+                  }
+                );
               });
           });
         }

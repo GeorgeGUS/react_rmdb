@@ -27,6 +27,11 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    const storedState = localStorage.getItem('HomeState');
+    if (storedState) {
+      this.setState({ ...JSON.parse(storedState) });
+      return;
+    }
     this.setState({ loading: true });
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=${LANG}&page=1`;
     this.fetchItems(endpoint);
@@ -65,13 +70,20 @@ class Home extends Component {
     fetch(endpoint)
       .then(result => result.json())
       .then(result => {
-        this.setState({
-          movies: [...this.state.movies, ...result.results],
-          heroImage: this.state.heroImage || result.results[0],
-          loading: false,
-          currentPage: result.page,
-          totalPages: result.total_pages
-        });
+        this.setState(
+          {
+            movies: [...this.state.movies, ...result.results],
+            heroImage: this.state.heroImage || result.results[0],
+            loading: false,
+            currentPage: result.page,
+            totalPages: result.total_pages
+          },
+          () => {
+            if (this.state.searchTerm === '') {
+              localStorage.setItem('HomeState', JSON.stringify(this.state));
+            }
+          }
+        );
       })
       .catch(err => console.error('Error:', err));
   };
