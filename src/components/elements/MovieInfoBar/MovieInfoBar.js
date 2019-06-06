@@ -3,31 +3,29 @@ import FontAwesome from 'react-fontawesome';
 import { calcTime, convertMoney } from '../../../helpers';
 import './MovieInfoBar.css';
 
-const MovieInfoBar = ({ movie: { runtime, budget, revenue } }) => {
-  return (
-    <div className='rmdb-movieinfobar'>
-      <div className='rmdb-movieinfobar-content'>
-        <div className='rmdb-movieinfobar-col'>
-          <FontAwesome className='fa-time' name='clock-o' size='2x' />
-          <span className='rmdb-movieinfobar-info'>
-            Running time: {calcTime(runtime)}
-          </span>
-        </div>
-        <div className='rmdb-movieinfobar-col'>
-          <FontAwesome className='fa-budget' name='money' size='2x' />
-          <span className='rmdb-movieinfobar-info'>
-            Budget: {convertMoney(budget)}
-          </span>
-        </div>
-        <div className='rmdb-movieinfobar-col'>
-          <FontAwesome className='fa-revenue' name='ticket' size='2x' />
-          <span className='rmdb-movieinfobar-info'>
-            Revenue: {convertMoney(revenue)}
-          </span>
-        </div>
+const MovieInfoBar = ({ movie: { runtime, budget, revenue } }) => (
+  <div className='rmdb-movieinfobar'>
+    <div className='rmdb-movieinfobar-content'>
+      <div className='rmdb-movieinfobar-col'>
+        <FontAwesome className='fa-time' name='clock-o' size='2x' />
+        <span className='rmdb-movieinfobar-info'>
+          Running time: {calcTime(runtime)}
+        </span>
+      </div>
+      <div className='rmdb-movieinfobar-col'>
+        <FontAwesome className='fa-budget' name='money' size='2x' />
+        <span className='rmdb-movieinfobar-info'>
+          Budget: {convertMoney(budget)}
+        </span>
+      </div>
+      <div className='rmdb-movieinfobar-col'>
+        <FontAwesome className='fa-revenue' name='ticket' size='2x' />
+        <span className='rmdb-movieinfobar-info'>
+          Revenue: {convertMoney(revenue)}
+        </span>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default MovieInfoBar;

@@ -1,4 +1,5 @@
 .rmdb-movieinfo {
+  background-color: #000;
   background-size: cover !important;
   background-position: center !important;
   width: 100%;
@@ -12,6 +13,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -94,12 +96,15 @@ meter::-webkit-meter-bar {
   background: #fff;
   width: 200px;
 }
+
 meter::-webkit-meter-optimum-value {
   background: linear-gradient(to bottom, #16d47b);
 }
+
 meter::-webkit-meter-suboptimum-value {
   background: linear-gradient(to bottom, #fbb450);
 }
+
 meter::-webkit-meter-even-less-good-value {
   background: linear-gradient(to bottom, #ee5f5b);
 }

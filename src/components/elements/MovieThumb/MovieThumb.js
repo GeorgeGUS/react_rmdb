@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './MovieThumb.css';
 
-const MovieThumb = ({ clickable, image, movieId, movieName }) => {
+const MovieThumb = ({ clickable, image, movieId }) => {
   return (
     <div className='rmdb-moviethumb'>
       {clickable ? (
@@ -20,7 +20,6 @@ const MovieThumb = ({ clickable, image, movieId, movieName }) => {
 MovieThumb.propTypes = {
   image: PropTypes.string,
   movieId: PropTypes.number,
-  movieName: PropTypes.string,
   clickable: PropTypes.bool
 };
 

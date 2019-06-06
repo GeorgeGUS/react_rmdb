@@ -14,9 +14,9 @@ const MovieInfo = ({ movie, directors = [] }) => {
     <div
       className='rmdb-movieinfo'
       style={{
-        background: movie.backdrop_path
-          ? `url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${movie.backdrop_path}')`
-          : '#000'
+        backgroundImage: `url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${
+          movie.backdrop_path
+        }')`
       }}
     >
       <div className='rmdb-movieinfo-content'>

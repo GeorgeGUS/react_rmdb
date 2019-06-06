@@ -7,7 +7,7 @@ import Movie from '../Movie/Movie';
 
 const App = () => {
   return (
-    <HashRouter basename='/react_rmdb/'>
+    <HashRouter>
       <React.Fragment>
         <Header />
         <Switch>
