@@ -34,37 +34,32 @@ class Home extends Component {
       return;
     }
     this.setState({ loading: true });
-    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=${LANG}&page=1`;
-    this.fetchItems(endpoint);
+    this.fetchItems(this.popularEP(false, ''));
   }
 
-  searchItems = searchTerm => {
-    let endpoint = '';
-    this.setState({
-      movies: [],
-      loading: true,
-      searchTerm
-    });
-    if (searchTerm === '') {
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=${LANG}&page=1`;
-    } else {
-      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=${LANG}&query=${searchTerm}`;
-    }
-    this.fetchItems(endpoint);
-  };
+  createEndpoint = type => (loadMore, searchTerm) =>
+    `${API_URL}${type}?api_key=${API_KEY}&language=${LANG}&page=${loadMore &&
+      this.state.currentPage + 1}&query=${searchTerm}`;
 
-  loadMoreItems = () => {
-    let endpoint = '';
-    this.setState({ loading: true });
-    if (this.state.searchTerm === '') {
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=${LANG}&page=${this
-        .state.currentPage + 1}`;
-    } else {
-      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=${LANG}&query=${
-        this.state.searchTerm
-      }&page=${this.state.currentPage + 1}`;
-    }
-    this.fetchItems(endpoint);
+  popularEP = this.createEndpoint('movie/popular');
+  searchEP = this.createEndpoint('search/movie');
+
+  updateItems = (loadMore, searchTerm) => {
+    this.setState(
+      {
+        movies: loadMore ? [...this.state.movies] : [],
+        loading: true,
+        searchTerm: loadMore ? this.state.searchTerm : searchTerm
+      },
+      () => {
+        const { searchTerm: stateSearchTerm } = this.state;
+        this.fetchItems(
+          !stateSearchTerm
+            ? this.popularEP(loadMore, '')
+            : this.searchEP(loadMore, stateSearchTerm)
+        );
+      }
+    );
   };
 
   fetchItems = async endpoint => {
@@ -111,7 +106,7 @@ class Home extends Component {
               title={heroImage.original_title}
               text={heroImage.overview}
             />
-            <SearchBar callback={this.searchItems} />
+            <SearchBar callback={this.updateItems} />
           </div>
         )}
         <div className='rmdb-home-grid'>
@@ -132,7 +127,7 @@ class Home extends Component {
           </FourColGrid>
           {loading && <Spinner />}
           {currentPage < totalPages && !loading && (
-            <LoadMoreBtn text='Load More' onClick={this.loadMoreItems} />
+            <LoadMoreBtn text='Load More' onClick={this.updateItems} />
           )}
         </div>
       </div>
