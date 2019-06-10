@@ -7,7 +7,7 @@ const MovieThumb = ({ clickable, image, movieId }) => {
   return (
     <div className='rmdb-moviethumb'>
       {clickable ? (
-        <Link to={`/${movieId}`}>
+        <Link to={`/movie/${movieId}`}>
           <img src={image} alt='moviethumb' />
         </Link>
       ) : (

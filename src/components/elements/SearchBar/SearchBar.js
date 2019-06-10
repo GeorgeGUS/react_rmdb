@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import './SearchBar.css';
 
@@ -9,13 +10,15 @@ class SearchBar extends Component {
 
   timeout = null;
 
-  doSearch = e => {
-    const { callback } = this.props;
-    this.setState({ value: e.target.value });
-    clearTimeout(this.timeout);
+  doSearch = ({ target: { value } }) => {
+    const { callback, history } = this.props;
 
+    this.setState({ value });
+    clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      callback(false, this.state.value);
+      const value = this.state.value.trim();
+      callback(false, value);
+      history.push(`/search/${value}`);
     }, 750);
   };
 
@@ -37,4 +40,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

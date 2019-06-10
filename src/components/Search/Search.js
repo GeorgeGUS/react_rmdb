@@ -5,43 +5,42 @@ import {
   LANG,
   IMAGE_BASE_URL,
   NO_IMAGE_URL,
-  BACKDROP_SIZE,
   POSTER_SIZE
 } from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
-import HeroImage from '../elements/HeroImage/HeroImage';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
-import './Home.css';
+import './Search.css';
 
-class Home extends Component {
+class Search extends Component {
   state = {
     movies: [],
-    heroImage: null,
     loading: false,
     currentPage: 0,
     totalPages: 0,
-    searchTerm: ''
+    searchTerm: this.props.match.params.searchTerm || ''
   };
 
   componentDidMount() {
-    const storedState = localStorage.getItem('HomeState');
-    if (storedState) {
-      this.setState({ ...JSON.parse(storedState) });
-      return;
-    }
+    const { searchTerm } = this.state;
     this.setState({ loading: true });
-    this.fetchItems(this.popularEP(false, ''));
+    this.fetchItems(this.searchEP(false, searchTerm));
+  }
+
+  componentDidUpdate(prevProps) {
+    const { searchTerm } = this.props.match.params;
+    if (prevProps.match.params.searchTerm !== searchTerm) {
+      this.updateItems(false, searchTerm);
+    }
   }
 
   createEndpoint = type => (loadMore, searchTerm) =>
     `${API_URL}${type}?api_key=${API_KEY}&language=${LANG}&page=${loadMore &&
       this.state.currentPage + 1}&query=${searchTerm}`;
 
-  popularEP = this.createEndpoint('movie/popular');
   searchEP = this.createEndpoint('search/movie');
 
   updateItems = (loadMore, searchTerm) => {
@@ -53,54 +52,34 @@ class Home extends Component {
       },
       () => {
         const { searchTerm: stateSearchTerm } = this.state;
-        this.fetchItems(
-          !stateSearchTerm
-            ? this.popularEP(loadMore, '')
-            : this.searchEP(loadMore, stateSearchTerm)
-        );
+        this.fetchItems(this.searchEP(loadMore, stateSearchTerm));
       }
     );
   };
 
   fetchItems = async endpoint => {
-    const { movies, heroImage, searchTerm } = this.state;
+    const { movies } = this.state;
     try {
       const result = await (await fetch(endpoint)).json();
-      this.setState(
-        {
-          movies: [...movies, ...result.results],
-          heroImage: heroImage || result.results[0],
-          loading: false,
-          currentPage: result.page,
-          totalPages: result.total_pages
-        },
-        () => {
-          if (searchTerm === '') {
-            localStorage.setItem('HomeState', JSON.stringify(this.state));
-          }
-        }
-      );
+      this.setState({
+        movies: [...movies, ...result.results],
+        loading: false,
+        currentPage: result.page,
+        totalPages: result.total_pages
+      });
     } catch (e) {
       console.error('Fetch error:', e);
     }
   };
 
   render() {
-    const { loading, movies, heroImage, currentPage, totalPages } = this.state;
+    const { loading, searchTerm, movies, currentPage, totalPages } = this.state;
+    const gridHeader = `Search results for "${searchTerm}"`;
     return (
       <div className='rmdb-home'>
-        {heroImage && (
-          <HeroImage
-            image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${
-              heroImage.backdrop_path
-            }`}
-            title={heroImage.original_title}
-            text={heroImage.overview}
-          />
-        )}
         <SearchBar callback={this.updateItems} />
         <div className='rmdb-home-grid'>
-          <FourColGrid header={'Popular Movies'} loading={loading}>
+          <FourColGrid header={gridHeader} loading={loading}>
             {movies.map(el => (
               <MovieThumb
                 key={el.id}
@@ -125,4 +104,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Search;
