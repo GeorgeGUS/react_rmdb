@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+
 import { API_URL, API_KEY, LANG } from '../../config';
-import Navigation from '../elements/Navigation/Navigation';
+import Actor from '../elements/Actor/Actor';
+import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieInfo from '../elements/MovieInfo/MovieInfo';
 import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar';
-import FourColGrid from '../elements/FourColGrid/FourColGrid';
-import Actor from '../elements/Actor/Actor';
+import Navigation from '../elements/Navigation/Navigation';
 import Spinner from '../elements/Spinner/Spinner';
-import './Movie.css';
+
+import './page.css';
+
 class Movie extends Component {
   state = {
     movie: null,
@@ -59,7 +62,7 @@ class Movie extends Component {
   render() {
     const { movie, directors, actors, loading } = this.state;
     return (
-      <div className='rmdb-movie'>
+      <div className='rmdb-page'>
         {movie && (
           <div>
             <Navigation title={movie.title} />
@@ -68,7 +71,7 @@ class Movie extends Component {
           </div>
         )}
         {actors && (
-          <div className='rmdb-movie-grid'>
+          <div className='rmdb-page-grid'>
             <FourColGrid header={'Actors'}>
               {actors.map(actor => (
                 <Actor key={actor.name} actor={actor} />

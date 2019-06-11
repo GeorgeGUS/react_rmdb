@@ -2,9 +2,12 @@ import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Header from '../elements/Header/Header';
 import NotFound from '../elements/NotFound/NotFound';
-import Home from '../Home/Home';
-import Movie from '../Movie/Movie';
-import Search from '../Search/Search';
+import Home from '../pages/Home';
+import Movie from '../pages/Movie';
+import Search from '../pages/Search';
+import Actor from '../pages/Actor';
+
+import './App.css';
 
 const App = () => {
   return (
@@ -15,6 +18,7 @@ const App = () => {
           <Route path='/' component={Home} exact />
           <Route path='/search/:searchTerm' component={Search} exact />
           <Route path='/movie/:movieId' component={Movie} exact />
+          <Route path='/actor/:actorId' component={Actor} exact />
           <Route component={NotFound} />
         </Switch>
       </React.Fragment>

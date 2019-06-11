@@ -1,3 +1,27 @@
+.rmdb-moviethumb a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+
+.rmdb-moviethumb-title {
+  position: absolute;
+  bottom: 0;
+  transform: translate(0, 100%);
+  transition: all 0.15s ease-out;
+  width: 100%;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 20px;
+  color: #fff;
+  box-sizing: border-box;
+  background-color: #000a;
+}
+
+.rmdb-moviethumb a:hover .rmdb-moviethumb-title {
+  transform: translate(0);
+}
+
 .rmdb-moviethumb img {
   width: 500px;
   height: auto;
@@ -5,12 +29,4 @@
   max-height: 100%;
   transition: all 0.3s;
   box-sizing: border-box;
-}
-
-.clickable {
-  cursor: pointer;
-}
-
-.clickable:hover {
-  opacity: 0.8;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   API_URL,
   API_KEY,
@@ -15,7 +16,7 @@ import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
-import './Home.css';
+import './page.css';
 
 class Home extends Component {
   state = {
@@ -88,7 +89,7 @@ class Home extends Component {
   render() {
     const { loading, movies, heroImage, currentPage, totalPages } = this.state;
     return (
-      <div className='rmdb-home'>
+      <div className='rmdb-page'>
         {heroImage && (
           <HeroImage
             image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${
@@ -99,12 +100,13 @@ class Home extends Component {
           />
         )}
         <SearchBar callback={this.updateItems} />
-        <div className='rmdb-home-grid'>
+        <div className='rmdb-page-grid'>
           <FourColGrid header={'Popular Movies'} loading={loading}>
             {movies.map(el => (
               <MovieThumb
                 key={el.id}
                 clickable
+                title={el.title}
                 image={
                   el.poster_path
                     ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`

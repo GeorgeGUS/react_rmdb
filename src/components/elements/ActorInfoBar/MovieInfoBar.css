@@ -2,9 +2,8 @@
   background-color: #1c1c1c;
   position: relative;
   padding: 30px 20px;
-  box-sizing: border-box;
-  font-family: 'Abel', sans-serif;
   font-size: 22px;
+  box-sizing: border-box;
 }
 
 .rmdb-movieinfobar-content {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   API_URL,
   API_KEY,
@@ -13,7 +14,7 @@ import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
-import './Search.css';
+import './page.css';
 
 class Search extends Component {
   state = {
@@ -76,14 +77,15 @@ class Search extends Component {
     const { loading, searchTerm, movies, currentPage, totalPages } = this.state;
     const gridHeader = `Search results for "${searchTerm}"`;
     return (
-      <div className='rmdb-home'>
+      <div className='rmdb-page'>
         <SearchBar callback={this.updateItems} />
-        <div className='rmdb-home-grid'>
+        <div className='rmdb-page-grid'>
           <FourColGrid header={gridHeader} loading={loading}>
             {movies.map(el => (
               <MovieThumb
                 key={el.id}
                 clickable
+                title={el.title}
                 image={
                   el.poster_path
                     ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
