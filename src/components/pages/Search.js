@@ -86,6 +86,7 @@ class Search extends Component {
                 key={el.id}
                 clickable
                 title={el.title}
+                year={el.release_date && el.release_date.slice(0, 4)}
                 image={
                   el.poster_path
                     ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`

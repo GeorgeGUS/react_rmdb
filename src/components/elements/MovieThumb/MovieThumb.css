@@ -1,3 +1,7 @@
+.rmdb-moviethumb {
+  height: 100%;
+}
+
 .rmdb-moviethumb a {
   display: block;
   position: relative;
@@ -6,8 +10,8 @@
 
 .rmdb-moviethumb-title {
   position: absolute;
-  bottom: 0;
-  transform: translate(0, 100%);
+  top: 0;
+  transform: translate(0, -100%);
   transition: all 0.15s ease-out;
   width: 100%;
   margin: 0;
@@ -15,7 +19,7 @@
   font-size: 20px;
   color: #fff;
   box-sizing: border-box;
-  background-color: #000a;
+  background-color: #000d;
 }
 
 .rmdb-moviethumb a:hover .rmdb-moviethumb-title {

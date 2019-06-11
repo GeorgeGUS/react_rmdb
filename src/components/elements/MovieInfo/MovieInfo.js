@@ -10,7 +10,6 @@ import MovieThumb from '../MovieThumb/MovieThumb';
 import './MovieInfo.css';
 
 const MovieInfo = ({ movie, directors = [] }) => {
-  console.log(movie);
   const {
     backdrop_path,
     poster_path,

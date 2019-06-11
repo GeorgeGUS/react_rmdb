@@ -10,7 +10,7 @@
 }
 
 .rmdb-grid-element {
-  max-height: 430px;
+  /* max-height: 430px; */
   animation: animateGrid 0.5s;
   background-color: #1c1c1c;
   overflow: hidden;
