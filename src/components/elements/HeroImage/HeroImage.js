@@ -5,7 +5,7 @@ const HeroImage = ({ image, title, text }) => (
   <div
     className='rmdb-heroimage'
     style={{
-      background: `linear-gradient(to bottom, #0000 39%, #0000 41%, #000a 100%), url('${image}'), #1c1c1c`
+      backgroundImage: `linear-gradient(to bottom, #0000 39%, #0000 41%, #000a 100%), url('${image}')`
     }}
   >
     <div className='rmdb-heroimage-content'>

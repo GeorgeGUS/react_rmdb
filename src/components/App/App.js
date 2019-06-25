@@ -7,8 +7,6 @@ import Movie from '../pages/Movie';
 import Search from '../pages/Search';
 import Actor from '../pages/Actor';
 
-import './App.css';
-
 const App = () => {
   return (
     <HashRouter>
