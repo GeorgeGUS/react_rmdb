@@ -4,8 +4,8 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <div className='rmdb-header'>
-      <div className='rmdb-header-content'>
+    <header className='rmdb-header'>
+      <div className='rmdb-header-content rmdb-container'>
         <Link to='/'>
           <img
             className='rmdb-logo'
@@ -19,7 +19,7 @@ const Header = () => {
           alt='tmdb-logo'
         />
       </div>
-    </div>
+    </header>
   );
 };
 

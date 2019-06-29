@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { getAge } from '../../../helpers';
-import './MovieInfoBar.css';
+import './InfoBar.css';
 
 const genderMap = {
   0: { gen: 'unavailable', icon: 'fa-genderless' },
@@ -15,29 +15,29 @@ const ActorInfoBar = ({
   const age = getAge(birthday, deathday);
   const { gen, icon } = genderMap[gender];
   return (
-    <div className='rmdb-movieinfobar'>
-      <div className='rmdb-movieinfobar-content'>
+    <div className='rmdb-infobar'>
+      <ul className='rmdb-infobar-list rmdb-container'>
         {birthday && (
-          <div className='rmdb-movieinfobar-col'>
+          <li className='rmdb-infobar-item'>
             <FontAwesome className='fa-time' name='calendar' size='2x' />
-            <span className='rmdb-movieinfobar-info'>
+            <span className='rmdb-infobar-info'>
               Age: {birthday} – {deathday ? deathday : 'now'} ({age} years old)
             </span>
-          </div>
+          </li>
         )}
-        <div className='rmdb-movieinfobar-col'>
+        <li className='rmdb-infobar-item'>
           <FontAwesome className={icon} name='gender' size='2x' />
-          <span className='rmdb-movieinfobar-info'>Gender: {gen}</span>
-        </div>
+          <span className='rmdb-infobar-info'>Gender: {gen}</span>
+        </li>
         {place_of_birth && (
-          <div className='rmdb-movieinfobar-col'>
+          <li className='rmdb-infobar-item'>
             <FontAwesome className='fa-globe' name='globe' size='2x' />
-            <span className='rmdb-movieinfobar-info'>
+            <span className='rmdb-infobar-info'>
               Place of birth: {place_of_birth}
             </span>
-          </div>
+          </li>
         )}
-      </div>
+      </ul>
     </div>
   );
 };

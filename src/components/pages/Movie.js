@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { API_URL, API_KEY, LANG } from '../../config';
 import Actor from '../elements/Actor/Actor';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
-import MovieInfo from '../elements/MovieInfo/MovieInfo';
-import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar';
-import Navigation from '../elements/Navigation/Navigation';
+import MovieInfo from '../elements/Info/MovieInfo';
+import MovieInfoBar from '../elements/InfoBar/MovieInfoBar';
+import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import Spinner from '../elements/Spinner/Spinner';
 
 import './page.css';
@@ -62,16 +62,16 @@ class Movie extends Component {
   render() {
     const { movie, directors, actors, loading } = this.state;
     return (
-      <div className='rmdb-page'>
+      <main className='rmdb-page'>
         {movie && (
-          <div>
-            <Navigation title={movie.title} />
+          <>
+            <Breadcrumbs title={movie.title} />
             <MovieInfo movie={movie} directors={directors} />
             <MovieInfoBar movie={movie} />
-          </div>
+          </>
         )}
         {actors && (
-          <div className='rmdb-page-grid'>
+          <div className='rmdb-container'>
             <FourColGrid header={'Actors'}>
               {actors.map(actor => (
                 <Actor key={actor.name} actor={actor} />
@@ -81,7 +81,7 @@ class Movie extends Component {
         )}
         {loading && <Spinner />}
         {!actors && !loading && <h1>No movie found!</h1>}
-      </div>
+      </main>
     );
   }
 }

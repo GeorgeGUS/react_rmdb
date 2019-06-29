@@ -1,0 +1,161 @@
+.rmdb-movieinfo {
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding: 40px 0;
+  box-sizing: border-box;
+  animation: animateMovieinfo 1s;
+}
+
+@keyframes animateMovieinfo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.rmdb-movieinfo-content {
+  color: #fff;
+  background-color: rgb(0, 0, 0, 0.7);
+}
+
+.rmdb-movieinfo-thumb {
+  float: left;
+  margin-top: -20px;
+  margin-right: 2.4em;
+  margin-bottom: 1em;
+  width: 350px;
+}
+
+@media screen and (max-width: 720px) {
+  .rmdb-movieinfo {
+    padding: 20px 0;
+  }
+
+  .rmdb-movieinfo-thumb {
+    width: 200px;
+    margin-top: -10px;
+    margin-right: 1.6em;
+    margin-bottom: 0.5em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .rmdb-movieinfo-thumb {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
+}
+
+.rmdb-movieinfo-text {
+  padding: 40px;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+.rmdb-movieinfo-sections {
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+}
+
+.rmdb-movieinfo-section {
+  margin-right: 3em;
+}
+
+.rmdb-movieinfo-section p {
+  margin-bottom: 0;
+}
+
+.rmdb-movieinfo-content h1 {
+  margin-top: 0;
+  line-height: 1;
+}
+
+.rmdb-movieinfo-content h3 {
+  text-transform: uppercase;
+}
+
+.rmdb-movieinfo-content p {
+  font-size: 1.2rem;
+  line-height: 1.5em;
+}
+
+@media screen and (max-width: 720px) {
+  .rmdb-movieinfo-sections {
+    padding-bottom: 20px;
+  }
+
+  .rmdb-movieinfo-text {
+    padding: 0;
+  }
+
+  .rmdb-movieinfo-content h1 {
+    font-size: 2rem;
+  }
+
+  .rmdb-movieinfo-content h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .rmdb-movieinfo-content p {
+    font-size: 1rem;
+    line-height: 1.25em;
+  }
+}
+
+.rmdb-rating {
+  display: flex;
+  margin-top: 20px;
+}
+
+.rmdb-rating-scale {
+  width: 250px;
+  height: 1.5em;
+}
+
+meter::-webkit-meter-bar {
+  background-color: #fff;
+  width: 230px;
+  height: 1.5em;
+}
+
+meter::-webkit-meter-optimum-value {
+  background: linear-gradient(to bottom, #16d47b);
+}
+
+meter::-webkit-meter-suboptimum-value {
+  background: linear-gradient(to bottom, #fbb450);
+}
+
+meter::-webkit-meter-even-less-good-value {
+  background: linear-gradient(to bottom, #ee5f5b);
+}
+
+@media screen and (max-width: 720px) {
+  .rmdb-rating-scale {
+    width: 170px;
+    height: 1.25em;
+  }
+
+  meter::-webkit-meter-bar {
+    width: 150px;
+    height: 1.25em;
+  }
+}
+
+.rmdb-rating-score {
+  margin: 0;
+}
+
+.fa-film {
+  margin-top: auto;
+  margin-left: auto;
+}

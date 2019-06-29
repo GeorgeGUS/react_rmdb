@@ -79,7 +79,7 @@ class Search extends Component {
     return (
       <div className='rmdb-page'>
         <SearchBar callback={this.updateItems} />
-        <div className='rmdb-page-grid'>
+        <div className='rmdb-container'>
           <FourColGrid header={gridHeader} loading={loading}>
             {movies.map(el => (
               <MovieThumb

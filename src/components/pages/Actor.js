@@ -8,10 +8,10 @@ import {
   NO_IMAGE_URL,
   POSTER_SIZE
 } from '../../config';
+import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
+import ActorInfo from '../elements/Info/ActorInfo';
+import ActorInfoBar from '../elements/InfoBar/ActorInfoBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
-import ActorInfo from '../elements/ActorInfo/ActorInfo';
-import ActorInfoBar from '../elements/ActorInfoBar/ActorInfoBar';
-import Navigation from '../elements/Navigation/Navigation';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import Spinner from '../elements/Spinner/Spinner';
 
@@ -71,14 +71,14 @@ class Actor extends Component {
     return (
       <div className='rmdb-page'>
         {actor && (
-          <div>
-            <Navigation title={actor.name} />
+          <>
+            <Breadcrumbs title={actor.name} />
             <ActorInfo actor={actor} />
             <ActorInfoBar actor={actor} />
-          </div>
+          </>
         )}
         {movies && (
-          <div className='rmdb-page-grid'>
+          <div className='rmdb-container'>
             <FourColGrid header={`Movies with ${actor.name}`} loading={loading}>
               {movies
                 .sort((a, b) => {

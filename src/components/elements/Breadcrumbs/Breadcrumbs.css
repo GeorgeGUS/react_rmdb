@@ -1,0 +1,27 @@
+.rmdb-breadcrumbs {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #353535;
+  color: #fff;
+}
+
+.rmdb-breadcrumbs-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rmdb-breadcrumbs-item,
+.rmdb-breadcrumbs-item a {
+  font-size: 22px;
+  line-height: 30px;
+  color: #fff;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+.rmdb-breadcrumbs-item:not(:last-child)::after {
+  content: '/';
+}

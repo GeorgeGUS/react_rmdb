@@ -1,38 +1,36 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { calcTime, convertMoney } from '../../../helpers';
-import './MovieInfoBar.css';
+import './InfoBar.css';
 
 const MovieInfoBar = ({
   movie: { runtime, budget, revenue, release_date }
 }) => (
-  <div className='rmdb-movieinfobar'>
-    <div className='rmdb-movieinfobar-content'>
-      <div className='rmdb-movieinfobar-col'>
+  <div className='rmdb-infobar'>
+    <ul className='rmdb-infobar-list rmdb-container'>
+      <li className='rmdb-infobar-item'>
         <FontAwesome className='fa-date' name='calendar' size='2x' />
-        <span className='rmdb-movieinfobar-info'>
-          Release date: {release_date}
-        </span>
-      </div>
-      <div className='rmdb-movieinfobar-col'>
+        <span className='rmdb-infobar-info'>Release date: {release_date}</span>
+      </li>
+      <li className='rmdb-infobar-item'>
         <FontAwesome className='fa-time' name='clock-o' size='2x' />
-        <span className='rmdb-movieinfobar-info'>
+        <span className='rmdb-infobar-info'>
           Running time: {calcTime(runtime)}
         </span>
-      </div>
-      <div className='rmdb-movieinfobar-col'>
+      </li>
+      <li className='rmdb-infobar-item'>
         <FontAwesome className='fa-budget' name='money' size='2x' />
-        <span className='rmdb-movieinfobar-info'>
+        <span className='rmdb-infobar-info'>
           Budget: {convertMoney(budget)}
         </span>
-      </div>
-      <div className='rmdb-movieinfobar-col'>
+      </li>
+      <li className='rmdb-infobar-item'>
         <FontAwesome className='fa-revenue' name='ticket' size='2x' />
-        <span className='rmdb-movieinfobar-info'>
+        <span className='rmdb-infobar-info'>
           Revenue: {convertMoney(revenue)}
         </span>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 );
 

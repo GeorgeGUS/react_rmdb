@@ -1,0 +1,29 @@
+.rmdb-infobar {
+  background-color: #1c1c1c;
+  position: relative;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.rmdb-infobar-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+
+.rmdb-infobar-item {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5em;
+  padding: 0.5em 0;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 720px) {
+  .rmdb-infobar-item {
+    font-size: 1rem;
+  }
+}

@@ -2,9 +2,13 @@ import React from 'react';
 import './LoadMoreBtn.css';
 
 const LoadMoreBtn = ({ text, onClick }) => (
-  <div className='rmdb-loadmorebtn' onClick={() => onClick(true)}>
-    <p>{text}</p>
-  </div>
+  <button
+    type='button'
+    className='rmdb-loadmorebtn'
+    onClick={() => onClick(true)}
+  >
+    {text}
+  </button>
 );
 
 export default LoadMoreBtn;

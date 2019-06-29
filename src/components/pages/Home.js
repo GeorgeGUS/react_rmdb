@@ -29,11 +29,11 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const storedState = localStorage.getItem('HomeState');
-    if (storedState) {
-      this.setState({ ...JSON.parse(storedState) });
-      return;
-    }
+    // const storedState = localStorage.getItem('HomeState');
+    // if (storedState) {
+    //   this.setState({ ...JSON.parse(storedState) });
+    //   return;
+    // }
     this.setState({ loading: true });
     this.fetchItems(this.popularEP(false, ''));
   }
@@ -64,7 +64,7 @@ class Home extends Component {
   };
 
   fetchItems = async endpoint => {
-    const { movies, heroImage, searchTerm } = this.state;
+    const { movies, heroImage } = this.state;
     try {
       const result = await (await fetch(endpoint)).json();
       this.setState(
@@ -76,9 +76,9 @@ class Home extends Component {
           totalPages: result.total_pages
         },
         () => {
-          if (searchTerm === '') {
-            localStorage.setItem('HomeState', JSON.stringify(this.state));
-          }
+          // if (searchTerm === '') {
+          //   localStorage.setItem('HomeState', JSON.stringify(this.state));
+          // }
         }
       );
     } catch (e) {
@@ -100,7 +100,7 @@ class Home extends Component {
           />
         )}
         <SearchBar callback={this.updateItems} />
-        <div className='rmdb-page-grid'>
+        <div className='rmdb-container'>
           <FourColGrid header={'Popular Movies'} loading={loading}>
             {movies.map(el => (
               <MovieThumb

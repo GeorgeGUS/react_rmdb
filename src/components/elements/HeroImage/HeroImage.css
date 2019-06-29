@@ -2,9 +2,6 @@
   background-color: #1c1c1c;
   background-size: 100%, cover;
   background-position: center, center;
-  width: 100%;
-  height: 600px;
-  position: relative;
   animation: animateHeroimage 1s;
 }
 
@@ -19,31 +16,21 @@
 }
 
 .rmdb-heroimage-content {
-  max-width: 1280px;
-  padding: 20px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 600px;
 }
 
 .rmdb-heroimage-text {
-  z-index: 100;
   max-width: 700px;
-  position: absolute;
-  bottom: 40px;
-  margin-right: 20px;
-  min-height: 100px;
-  background: rgba(0, 0, 0, 0);
-  color: #fff;
-}
-
-.rmdb-heroimage-text h1 {
-  font-size: 48px;
+  margin: 40px 0;
   color: #fff;
 }
 
 .rmdb-heroimage-text p {
-  font-size: 22px;
-  line-height: 26px;
-  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1.25;
 }
 
 @media screen and (max-width: 720px) {
@@ -52,13 +39,10 @@
   }
 
   .rmdb-heroimage-text h1 {
-    font-size: 38px;
-    color: #fff;
+    font-size: 2.2em;
   }
 
   .rmdb-heroimage-text p {
-    font-size: 16px;
-    line-height: 20px;
-    color: #fff;
+    font-size: 1rem;
   }
 }

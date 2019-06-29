@@ -1,12 +1,11 @@
 import React from 'react';
 import { IMAGE_BASE_URL, NO_IMAGE_URL, POSTER_SIZE } from '../../../config';
-import FontAwesome from 'react-fontawesome';
 import MovieThumb from '../MovieThumb/MovieThumb';
-import './MovieInfo.css';
+import './Info.css';
 
 const ActorInfo = ({ actor: { profile_path, name, biography } }) => (
   <div className='rmdb-movieinfo'>
-    <div className='rmdb-movieinfo-content'>
+    <div className='rmdb-movieinfo-content rmdb-container clearfix'>
       <div className='rmdb-movieinfo-thumb'>
         <MovieThumb
           image={
@@ -25,7 +24,6 @@ const ActorInfo = ({ actor: { profile_path, name, biography } }) => (
           </>
         )}
       </div>
-      <FontAwesome className='fa-film' name='film' size='5x' />
     </div>
   </div>
 );

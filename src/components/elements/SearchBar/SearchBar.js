@@ -25,15 +25,17 @@ class SearchBar extends Component {
   render() {
     return (
       <div className='rmdb-searchbar'>
-        <div className='rmdb-searchbar-content'>
-          <FontAwesome className='rmdb-fa-search' name='search' size='2x' />
-          <input
-            type='text'
-            className='rmdb-searchbar-input'
-            placeholder='Search'
-            onChange={this.doSearch}
-            value={this.state.value}
-          />
+        <div className='rmdb-container'>
+          <label className='rmdb-searchbar-label'>
+            <FontAwesome className='rmdb-fa-search' name='search' size='2x' />
+            <input
+              type='text'
+              className='rmdb-searchbar-input'
+              placeholder='Search'
+              onChange={this.doSearch}
+              value={this.state.value}
+            />
+          </label>
         </div>
       </div>
     );
