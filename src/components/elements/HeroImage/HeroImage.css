@@ -1,11 +1,12 @@
 .rmdb-heroimage {
+  position: relative;
   background-color: #1c1c1c;
   background-size: 100%, cover;
   background-position: center, center;
-  animation: animateHeroimage 1s;
+  animation: fadeIn 1s;
 }
 
-@keyframes animateHeroimage {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -26,6 +27,7 @@
   max-width: 700px;
   margin: 40px 0;
   color: #fff;
+  text-shadow: 1px 1px #1c1c1c;
 }
 
 .rmdb-heroimage-text p {

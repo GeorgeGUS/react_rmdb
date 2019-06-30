@@ -13,11 +13,17 @@ const Header = () => {
             alt='rmdb-logo'
           />
         </Link>
-        <img
-          className='rmdb-tmdb-logo'
-          src={`${process.env.PUBLIC_URL}/images/tmdb_logo.png`}
-          alt='tmdb-logo'
-        />
+        <a
+          href='https://www.themoviedb.org'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <img
+            className='rmdb-tmdb-logo'
+            src={`${process.env.PUBLIC_URL}/images/tmdb_logo.png`}
+            alt='tmdb-logo'
+          />
+        </a>
       </div>
     </header>
   );
