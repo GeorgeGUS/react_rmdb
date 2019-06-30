@@ -1,9 +1,19 @@
 .rmdb-heroimage {
   position: relative;
   background-color: #1c1c1c;
-  background-size: 100%, cover;
-  background-position: center, center;
+  background-size: cover;
+  background-position: center;
   animation: fadeIn 1s;
+}
+
+.rmdb-heroimage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(#0000 40%, #000a);
 }
 
 @keyframes fadeIn {
@@ -17,6 +27,7 @@
 }
 
 .rmdb-heroimage-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
