@@ -27,7 +27,7 @@ class SearchBar extends Component {
       <div className='rmdb-searchbar'>
         <div className='rmdb-container'>
           <label className='rmdb-searchbar-label'>
-            <FontAwesome className='rmdb-fa-search' name='search' size='2x' />
+            <FontAwesome className='rmdb-fa-search' name='search' size='1x' />
             <input
               type='text'
               className='rmdb-searchbar-input'
