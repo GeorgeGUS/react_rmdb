@@ -25,21 +25,21 @@ const MovieInfo = ({ movie, directors = [] }) => {
     : NO_IMAGE_URL;
   const genresNames = genres.map(g => g.name).join(', ');
   return (
-    <div className='rmdb-movieinfo' style={bgImage}>
-      <div className='rmdb-movieinfo-content rmdb-container clearfix'>
-        <div className='rmdb-movieinfo-thumb'>
+    <div className='rmdb-info' style={bgImage}>
+      <div className='rmdb-info-content rmdb-container clearfix'>
+        <div className='rmdb-info-thumb'>
           <MovieThumb image={poster} />
         </div>
-        <div className='rmdb-movieinfo-text'>
+        <div className='rmdb-info-text'>
           <h1>{title}</h1>
           <h3>Plot</h3>
           <p>{overview}</p>
-          <div className='rmdb-movieinfo-sections'>
-            <div className='rmdb-movieinfo-section'>
+          <div className='rmdb-info-sections'>
+            <div className='rmdb-info-section'>
               <h3>Genres</h3>
               <p>{genresNames}</p>
             </div>
-            <div className='rmdb-movieinfo-section'>
+            <div className='rmdb-info-section'>
               <h3>IMDB rating</h3>
               <div className='rmdb-rating'>
                 <meter
@@ -54,13 +54,9 @@ const MovieInfo = ({ movie, directors = [] }) => {
                 <p className='rmdb-rating-score'>{vote_average}</p>
               </div>
             </div>
-            <div className='rmdb-movieinfo-section'>
+            <div className='rmdb-info-section'>
               {directors.length > 1 ? <h3>Directors</h3> : <h3>Director</h3>}
-              {directors.map(({ name }) => (
-                <p key={name} className='rmdb-director'>
-                  {name}
-                </p>
-              ))}
+              <p>{directors.map(({ name }) => name).join(', ')}</p>
             </div>
           </div>
         </div>

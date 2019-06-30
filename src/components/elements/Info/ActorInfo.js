@@ -4,9 +4,9 @@ import MovieThumb from '../MovieThumb/MovieThumb';
 import './Info.css';
 
 const ActorInfo = ({ actor: { profile_path, name, biography } }) => (
-  <div className='rmdb-movieinfo'>
-    <div className='rmdb-movieinfo-content rmdb-container clearfix'>
-      <div className='rmdb-movieinfo-thumb'>
+  <div className='rmdb-info'>
+    <div className='rmdb-info-content rmdb-container clearfix'>
+      <div className='rmdb-info-thumb'>
         <MovieThumb
           image={
             profile_path
@@ -15,7 +15,7 @@ const ActorInfo = ({ actor: { profile_path, name, biography } }) => (
           }
         />
       </div>
-      <div className='rmdb-movieinfo-text'>
+      <div className='rmdb-info-text'>
         <h1>{name}</h1>
         {biography && (
           <>
