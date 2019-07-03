@@ -11,7 +11,6 @@ const FourColGrid = ({ children, header, loading, isActors }) => {
         {el}
       </div>
     ));
-  console.log(loading);
   const contentClasses = cn({
     'rmdb-grid-content': true,
     'rmdb-grid-content-actor': isActors
