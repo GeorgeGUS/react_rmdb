@@ -1,5 +1,8 @@
 // Convert time to hours and minutes
 export const calcTime = time => {
+  if (!time || time === 0) {
+    return 'n/a';
+  }
   const hours = Math.floor(time / 60);
   const mins = time % 60;
   return `${hours}h ${mins}m`;
@@ -7,6 +10,9 @@ export const calcTime = time => {
 
 // Convert a number to $ format
 export const convertMoney = money => {
+  if (!money || money === 0) {
+    return 'n/a';
+  }
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
