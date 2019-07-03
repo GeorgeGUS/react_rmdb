@@ -2,7 +2,6 @@
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #353535;
-  color: #fff;
 }
 
 .rmdb-breadcrumbs-list {
@@ -17,7 +16,7 @@
 .rmdb-breadcrumbs-item a {
   font-size: 22px;
   line-height: 30px;
-  color: #fff;
+  color: #f3f3f3;
   padding-right: 10px;
   text-decoration: none;
 }

@@ -16,10 +16,15 @@
   width: 100%;
   margin: 0;
   padding: 5px 10px;
-  font-size: 20px;
+  font-size: 1.2rem;
   color: #fff;
-  box-sizing: border-box;
   background-color: #000d;
+}
+
+@media screen and (max-width: 550px) {
+  .rmdb-moviethumb-title {
+    font-size: 1rem;
+  }
 }
 
 .rmdb-moviethumb a:hover .rmdb-moviethumb-title {
