@@ -1,6 +1,5 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import Header from '../elements/Header/Header';
 import NotFound from '../elements/NotFound/NotFound';
 import Home from '../pages/Home';
@@ -42,7 +41,6 @@ const App = () => {
   return (
     <HashRouter>
       <React.Fragment>
-        <Helmet defaultTitle='React Movie' />
         <Header />
         <Switch>
           <Route path='/' component={Home} exact />

@@ -12,14 +12,14 @@ const MetaTags = ({ title, desc, image }) => (
     <meta property='og:title' content={title} />
     <meta property='og:description' content={desc} />
     <meta property='og:image' content={image} />
+    <meta property='og:site_name' content='React Movie' />
   </Helmet>
 );
 
 MetaTags.propTypes = {
   title: PropTypes.string,
   desc: PropTypes.string,
-  image: PropTypes.string,
-  url: PropTypes.string
+  image: PropTypes.string
 };
 
 export default MetaTags;
