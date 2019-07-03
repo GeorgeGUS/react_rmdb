@@ -1,7 +1,7 @@
 .rmdb-searchbar {
   padding-top: 25px;
   padding-bottom: 25px;
-  color: #fff;
+  color: #f3f3f3;
   background: #1c1c1c;
 }
 
@@ -11,8 +11,7 @@
   font-size: 2.5rem;
 }
 
-.rmdb-fa-search.fa-search {
-  margin-right: 0;
+.rmdb-searchbar-icon {
   padding: 0.25em 0.5em;
   z-index: 1;
 }
@@ -45,7 +44,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .rmdb-fa-search.fa-search {
+  .rmdb-searchbar-icon {
     display: none;
   }
 

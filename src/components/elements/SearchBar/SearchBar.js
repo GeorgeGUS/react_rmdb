@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './SearchBar.css';
 
 class SearchBar extends Component {
@@ -42,7 +42,7 @@ class SearchBar extends Component {
       <div className='rmdb-searchbar'>
         <div className='rmdb-container'>
           <label className='rmdb-searchbar-label'>
-            <FontAwesome className='rmdb-fa-search' name='search' />
+            <FontAwesomeIcon className='rmdb-searchbar-icon' icon='search' />
             <input
               type='text'
               className='rmdb-searchbar-input'

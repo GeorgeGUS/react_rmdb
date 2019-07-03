@@ -1,42 +1,41 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getAge } from '../../../helpers';
 import './InfoBar.css';
 
 const genders = [
-  { gen: 'unavailable', icon: 'fa-genderless' },
-  { gen: 'woman', icon: 'fa-venus' },
-  { gen: 'man', icon: 'fa-mars' }
+  { gen: 'n/a', icon: 'genderless' },
+  { gen: 'Female', icon: 'venus' },
+  { gen: 'Male', icon: 'mars' }
 ];
 
 const ActorInfoBar = ({
   actor: { gender, birthday, deathday, place_of_birth }
 }) => {
   const age = getAge(birthday, deathday);
+  const ageStr = `${birthday} – ${
+    deathday ? deathday : 'now'
+  } (${age} years old)`;
   const { gen, icon } = genders[gender];
   return (
     <div className='rmdb-infobar'>
       <ul className='rmdb-infobar-list rmdb-container'>
-        {birthday && (
-          <li className='rmdb-infobar-item'>
-            <FontAwesome className='fa-time' name='calendar' size='2x' />
-            <span className='rmdb-infobar-info'>
-              Age: {birthday} – {deathday ? deathday : 'now'} ({age} years old)
-            </span>
-          </li>
-        )}
         <li className='rmdb-infobar-item'>
-          <FontAwesome className={icon} name='gender' size='2x' />
+          <FontAwesomeIcon icon={['far', 'calendar-alt']} size='2x' />
+          <span className='rmdb-infobar-info'>
+            Age: {birthday ? ageStr : 'n/a'}
+          </span>
+        </li>
+        <li className='rmdb-infobar-item'>
+          <FontAwesomeIcon icon={icon} size='2x' />
           <span className='rmdb-infobar-info'>Gender: {gen}</span>
         </li>
-        {place_of_birth && (
-          <li className='rmdb-infobar-item'>
-            <FontAwesome className='fa-globe' name='globe' size='2x' />
-            <span className='rmdb-infobar-info'>
-              Place of birth: {place_of_birth}
-            </span>
-          </li>
-        )}
+        <li className='rmdb-infobar-item'>
+          <FontAwesomeIcon icon='globe' size='2x' />
+          <span className='rmdb-infobar-info'>
+            Place of birth: {place_of_birth ? place_of_birth : 'n/a'}
+          </span>
+        </li>
       </ul>
     </div>
   );

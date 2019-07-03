@@ -22,6 +22,10 @@
   font-size: 1.4rem;
 }
 
+.rmdb-infobar-info {
+  margin-left: 0.5em;
+}
+
 @media screen and (max-width: 720px) {
   .rmdb-infobar-item {
     font-size: 1rem;
