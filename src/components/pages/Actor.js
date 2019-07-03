@@ -78,7 +78,10 @@ class Actor extends Component {
           </>
         )}
         {movies && (
-          <FourColGrid header={`Movies with ${actor.name}`} loading={loading}>
+          <FourColGrid
+            header={`${movies.length} Movies with ${actor.name}`}
+            loading={loading}
+          >
             {movies
               .sort((a, b) => {
                 return new Date(b.release_date) - new Date(a.release_date);
@@ -96,7 +99,7 @@ class Actor extends Component {
                   }
                   movieId={el.id}
                   movieName={el.title}
-                  hasCharacter
+                  gender={actor.gender}
                   character={el.character}
                 />
               ))}
