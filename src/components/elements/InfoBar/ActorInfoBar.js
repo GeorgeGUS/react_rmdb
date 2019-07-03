@@ -3,17 +3,17 @@ import FontAwesome from 'react-fontawesome';
 import { getAge } from '../../../helpers';
 import './InfoBar.css';
 
-const genderMap = {
-  0: { gen: 'unavailable', icon: 'fa-genderless' },
-  1: { gen: 'woman', icon: 'fa-venus' },
-  2: { gen: 'man', icon: 'fa-mars' }
-};
+const genders = [
+  { gen: 'unavailable', icon: 'fa-genderless' },
+  { gen: 'woman', icon: 'fa-venus' },
+  { gen: 'man', icon: 'fa-mars' }
+];
 
 const ActorInfoBar = ({
   actor: { gender, birthday, deathday, place_of_birth }
 }) => {
   const age = getAge(birthday, deathday);
-  const { gen, icon } = genderMap[gender];
+  const { gen, icon } = genders[gender];
   return (
     <div className='rmdb-infobar'>
       <ul className='rmdb-infobar-list rmdb-container'>

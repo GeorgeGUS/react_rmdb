@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './MovieThumb.css';
 
-const MovieThumb = ({ clickable, image, title, year, movieId }) => {
+const MovieThumb = ({
+  clickable,
+  image,
+  title,
+  year,
+  movieId,
+  hasCharacter,
+  character
+}) => {
   return (
     <div className='rmdb-moviethumb'>
       {clickable ? (
@@ -11,6 +19,10 @@ const MovieThumb = ({ clickable, image, title, year, movieId }) => {
           <img src={image} alt='moviethumb' />
           <p className='rmdb-moviethumb-title'>
             “{title}”{year ? `, ${year}` : ''}
+            <br />
+            {hasCharacter && (
+              <span>Character: {character ? character : 'Himself'}</span>
+            )}
           </p>
         </Link>
       ) : (
