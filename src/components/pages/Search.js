@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from '../elements/MetaTags/MetaTags';
 
 import {
   API_URL,
@@ -27,6 +28,7 @@ class Search extends Component {
 
   componentDidMount() {
     const { searchTerm } = this.state;
+    document.title = `RMDB - Search: ${searchTerm}`;
     this.setState({ loading: true });
     this.fetchItems(this.searchEP(false, searchTerm));
   }
@@ -75,11 +77,20 @@ class Search extends Component {
 
   render() {
     const { loading, searchTerm, movies, currentPage, totalPages } = this.state;
-    const gridHeader = `Search results for "${searchTerm}"`;
+    const title = `Search results for "${searchTerm}"`;
     return (
       <div className='rmdb-page'>
+        <MetaTags
+          title={`RMDB - Search: ${searchTerm}`}
+          desc={title}
+          image={
+            movies[0] &&
+            movies[0].poster_path &&
+            `${IMAGE_BASE_URL}${POSTER_SIZE}${movies[0].poster_path}`
+          }
+        />
         <SearchBar callback={this.updateItems} />
-        <FourColGrid header={gridHeader} loading={loading}>
+        <FourColGrid header={title} loading={loading}>
           {movies.map(el => (
             <MovieThumb
               key={el.id}

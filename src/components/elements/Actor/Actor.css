@@ -30,6 +30,14 @@
   margin: 0.5em 0;
 }
 
+a:hover .rmdb-actor-name {
+  color: #f3f3f3;
+}
+
+a:active .rmdb-actor-name {
+  color: #777777;
+}
+
 .rmdb-actor-character {
   font-size: 1.1rem;
   margin: 0.5em 0;

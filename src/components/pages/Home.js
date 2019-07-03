@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from '../elements/MetaTags/MetaTags';
 
 import {
   API_URL,
@@ -90,6 +91,14 @@ class Home extends Component {
     const { loading, movies, heroImage, currentPage, totalPages } = this.state;
     return (
       <div className='rmdb-page'>
+        <MetaTags
+          title={`RMDB - Popular Movies`}
+          desc={'This page is made for'}
+          image={
+            heroImage &&
+            `${IMAGE_BASE_URL}${POSTER_SIZE}${heroImage.backdrop_path}`
+          }
+        />
         {heroImage && (
           <HeroImage
             image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${

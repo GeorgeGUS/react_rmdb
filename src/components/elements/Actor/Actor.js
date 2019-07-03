@@ -16,10 +16,12 @@ const Actor = ({ actor }) => (
         alt={actor.name}
       />
     </Link>
-    <Link to={`/actor/${actor.id}`} className='rmdb-actor-info'>
-      <p className='rmdb-actor-name'>{actor.name}</p>
+    <div className='rmdb-actor-info'>
+      <Link to={`/actor/${actor.id}`}>
+        <p className='rmdb-actor-name'>{actor.name}</p>
+      </Link>
       <p className='rmdb-actor-character'>{actor.character}</p>
-    </Link>
+    </div>
   </div>
 );
 

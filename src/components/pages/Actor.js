@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from '../elements/MetaTags/MetaTags';
 
 import {
   API_URL,
@@ -68,10 +69,19 @@ class Actor extends Component {
 
   render() {
     const { actor, movies, loading } = this.state;
+    const poster =
+      actor && actor.profile_path
+        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+        : NO_IMAGE_URL;
     return (
       <div className='rmdb-page'>
         {actor && (
           <>
+            <MetaTags
+              title={`RMDB - ${actor.name}`}
+              desc={actor.biography}
+              image={poster}
+            />
             <Breadcrumbs title={actor.name} />
             <ActorInfo actor={actor} />
             <ActorInfoBar actor={actor} />
