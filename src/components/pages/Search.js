@@ -79,29 +79,27 @@ class Search extends Component {
     return (
       <div className='rmdb-page'>
         <SearchBar callback={this.updateItems} />
-        <div className='rmdb-container'>
-          <FourColGrid header={gridHeader} loading={loading}>
-            {movies.map(el => (
-              <MovieThumb
-                key={el.id}
-                clickable
-                title={el.title}
-                year={el.release_date && el.release_date.slice(0, 4)}
-                image={
-                  el.poster_path
-                    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
-                    : NO_IMAGE_URL
-                }
-                movieId={el.id}
-                movieName={el.title}
-              />
-            ))}
-          </FourColGrid>
-          {loading && <Spinner />}
-          {currentPage < totalPages && !loading && (
-            <LoadMoreBtn text='Load More' onClick={this.updateItems} />
-          )}
-        </div>
+        <FourColGrid header={gridHeader} loading={loading}>
+          {movies.map(el => (
+            <MovieThumb
+              key={el.id}
+              clickable
+              title={el.title}
+              year={el.release_date && el.release_date.slice(0, 4)}
+              image={
+                el.poster_path
+                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
+                  : NO_IMAGE_URL
+              }
+              movieId={el.id}
+              movieName={el.title}
+            />
+          ))}
+        </FourColGrid>
+        {loading && <Spinner />}
+        {currentPage < totalPages && !loading && (
+          <LoadMoreBtn text='Load More' onClick={this.updateItems} />
+        )}
       </div>
     );
   }

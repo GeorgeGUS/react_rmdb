@@ -71,13 +71,11 @@ class Movie extends Component {
           </>
         )}
         {actors && (
-          <div className='rmdb-container'>
-            <FourColGrid header={'Actors'}>
-              {actors.map(actor => (
-                <Actor key={actor.name} actor={actor} />
-              ))}
-            </FourColGrid>
-          </div>
+          <FourColGrid header={'Actors'} loading={loading} isActors>
+            {actors.map(actor => (
+              <Actor key={actor.name} actor={actor} />
+            ))}
+          </FourColGrid>
         )}
         {loading && <Spinner />}
         {!actors && !loading && <h1>No movie found!</h1>}

@@ -78,29 +78,29 @@ class Actor extends Component {
           </>
         )}
         {movies && (
-          <div className='rmdb-container'>
-            <FourColGrid header={`Movies with ${actor.name}`} loading={loading}>
-              {movies
-                .sort((a, b) => {
-                  return new Date(b.release_date) - new Date(a.release_date);
-                })
-                .map(el => (
-                  <MovieThumb
-                    key={el.id}
-                    clickable
-                    title={el.title}
-                    year={el.release_date && el.release_date.slice(0, 4)}
-                    image={
-                      el.poster_path
-                        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
-                        : NO_IMAGE_URL
-                    }
-                    movieId={el.id}
-                    movieName={el.title}
-                  />
-                ))}
-            </FourColGrid>
-          </div>
+          <FourColGrid header={`Movies with ${actor.name}`} loading={loading}>
+            {movies
+              .sort((a, b) => {
+                return new Date(b.release_date) - new Date(a.release_date);
+              })
+              .map(el => (
+                <MovieThumb
+                  key={el.id}
+                  clickable
+                  title={el.title}
+                  year={el.release_date && el.release_date.slice(0, 4)}
+                  image={
+                    el.poster_path
+                      ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
+                      : NO_IMAGE_URL
+                  }
+                  movieId={el.id}
+                  movieName={el.title}
+                  hasCharacter
+                  character={el.character}
+                />
+              ))}
+          </FourColGrid>
         )}
         {loading && <Spinner />}
         {!movies && !loading && <h1>Not found!</h1>}

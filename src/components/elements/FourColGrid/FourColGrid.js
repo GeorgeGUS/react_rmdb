@@ -1,27 +1,36 @@
 import React from 'react';
+import cn from 'classnames';
 import PropTypes from 'prop-types';
 import './FourColGrid.css';
 
-const FourColGrid = props => {
+const FourColGrid = ({ children, header, loading, isActors }) => {
   const renderElements = () =>
-    props.children &&
-    props.children.map((el, i) => (
+    children &&
+    children.map((el, i) => (
       <div key={i} className='rmdb-grid-element'>
         {el}
       </div>
     ));
+  console.log(loading);
+  const contentClasses = cn({
+    'rmdb-grid-content': true,
+    'rmdb-grid-content-actor': isActors
+  });
 
   return (
     <div className='rmdb-grid'>
-      {props.header && !props.loading ? <h1>{props.header}</h1> : null}
-      <div className='rmdb-grid-content'>{renderElements()}</div>
+      <div className='rmdb-container'>
+        {header && !loading ? <h2>{header}</h2> : null}
+        <div className={contentClasses}>{renderElements()}</div>
+      </div>
     </div>
   );
 };
 
 FourColGrid.propTypes = {
   header: PropTypes.string,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  isActors: PropTypes.bool
 };
 
 export default FourColGrid;
