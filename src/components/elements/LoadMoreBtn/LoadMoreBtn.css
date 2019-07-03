@@ -7,18 +7,17 @@
   font-size: 2.5rem;
   line-height: 1;
   color: #fff;
-  background-color: #16d47b;
+  background-color: hsl(155, 75%, 35%);
   border: 0;
   cursor: pointer;
 }
 
 .rmdb-loadmorebtn:hover {
-  background-image: linear-gradient(#0002, #0001);
+  background-color: hsl(155, 75%, 40%);
 }
 
 .rmdb-loadmorebtn:active {
-  color: #fafafa;
-  background-image: linear-gradient(#0003, #0004);
+  background-color: hsl(155, 75%, 30%);
 }
 
 .rmdb-loadmorebtn:focus:active {
