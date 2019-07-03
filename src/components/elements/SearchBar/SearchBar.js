@@ -11,23 +11,38 @@ class SearchBar extends Component {
   timeout = null;
 
   doSearch = ({ target: { value } }) => {
-    const { callback, history } = this.props;
-
     this.setState({ value });
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
+      const { callback, history } = this.props;
       const value = this.state.value.trim();
       callback(false, value);
       history.push(`/search/${value}`);
-    }, 750);
+    }, 1000);
   };
+
+  componentDidMount() {
+    const { searchTerm } = this.props.match.params;
+    searchTerm && this.setState({ value: searchTerm });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { searchTerm } = this.props.match.params;
+    if (searchTerm && prevProps.match.params.searchTerm !== searchTerm) {
+      this.setState({ value: searchTerm });
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({ value: '' });
+  }
 
   render() {
     return (
       <div className='rmdb-searchbar'>
         <div className='rmdb-container'>
           <label className='rmdb-searchbar-label'>
-            <FontAwesome className='rmdb-fa-search' name='search' size='1x' />
+            <FontAwesome className='rmdb-fa-search' name='search' />
             <input
               type='text'
               className='rmdb-searchbar-input'
