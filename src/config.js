@@ -1,21 +1,21 @@
 // Configuration for TMDB
-// To se the latest configuration fetch it from https://api.themoviedb.org/3/configuration?api_key=019e8f375549e0bbd4a4191862ebc88f
+// To se the latest configuration fetch it from https://api.themoviedb.org/3/configuration?api_key=844dba0bfd8f3a4f3799f6130ef9e335
 
 const API_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335';
 
-// Images
-// An image URL looks like this example:
-// http://image.tmdb.org/t/p/w780/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg
-
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/';
 const NO_IMAGE_URL = `${process.env.PUBLIC_URL}/images/no_image.jpg`;
 
-//Sizes: w300, w780, w1280, original
-const BACKDROP_SIZE = 'w1280';
+const getImageUrl = (imageSize, isBackdrop) => imagePath => {
+  const noImageUrl = isBackdrop ? '' : NO_IMAGE_URL;
+  return imagePath ? `${IMAGE_BASE_URL}${imageSize}${imagePath}` : noImageUrl;
+};
 
-// w92, w154, w185, w342, w500, w780, original
-const POSTER_SIZE = 'w500';
+const getBackdropUrl = getImageUrl('w1280', true);
+const getPosterUrl = getImageUrl('w500');
+const getThumbUrl = getImageUrl('w300');
+const getProfileUrl = getImageUrl('w154');
 
 // const LANG = 'ru-RU';
 const LANG = 'en-US';
@@ -24,8 +24,8 @@ export {
   API_URL,
   API_KEY,
   LANG,
-  IMAGE_BASE_URL,
-  NO_IMAGE_URL,
-  BACKDROP_SIZE,
-  POSTER_SIZE
+  getBackdropUrl,
+  getPosterUrl,
+  getThumbUrl,
+  getProfileUrl
 };

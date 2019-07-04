@@ -5,10 +5,8 @@ import {
   API_URL,
   API_KEY,
   LANG,
-  IMAGE_BASE_URL,
-  NO_IMAGE_URL,
-  BACKDROP_SIZE,
-  POSTER_SIZE
+  getBackdropUrl,
+  getPosterUrl
 } from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import HeroImage from '../elements/HeroImage/HeroImage';
@@ -94,16 +92,11 @@ class Home extends Component {
         <MetaTags
           title={`RMDB - Popular Movies`}
           desc={'This page is made for'}
-          image={
-            heroImage &&
-            `${IMAGE_BASE_URL}${POSTER_SIZE}${heroImage.backdrop_path}`
-          }
+          image={heroImage && getBackdropUrl(heroImage.backdrop_path)}
         />
         {heroImage && (
           <HeroImage
-            image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${
-              heroImage.backdrop_path
-            }`}
+            image={getBackdropUrl(heroImage.backdrop_path)}
             title={heroImage.original_title}
             text={heroImage.overview}
           />
@@ -116,11 +109,7 @@ class Home extends Component {
               clickable
               title={el.title}
               year={el.release_date && el.release_date.slice(0, 4)}
-              image={
-                el.poster_path
-                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
-                  : NO_IMAGE_URL
-              }
+              image={getPosterUrl(el.poster_path)}
               movieId={el.id}
               movieName={el.title}
             />

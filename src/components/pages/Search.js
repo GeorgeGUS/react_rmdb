@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
 
-import {
-  API_URL,
-  API_KEY,
-  LANG,
-  IMAGE_BASE_URL,
-  NO_IMAGE_URL,
-  POSTER_SIZE
-} from '../../config';
+import { API_URL, API_KEY, LANG, getPosterUrl } from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
@@ -83,11 +76,7 @@ class Search extends Component {
         <MetaTags
           title={`RMDB - Search: ${searchTerm}`}
           desc={title}
-          image={
-            movies[0] &&
-            movies[0].poster_path &&
-            `${IMAGE_BASE_URL}${POSTER_SIZE}${movies[0].poster_path}`
-          }
+          image={getPosterUrl(movies[0] && movies[0].poster_path)}
         />
         <SearchBar callback={this.updateItems} />
         <FourColGrid header={title} loading={loading}>
@@ -97,11 +86,7 @@ class Search extends Component {
               clickable
               title={el.title}
               year={el.release_date && el.release_date.slice(0, 4)}
-              image={
-                el.poster_path
-                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
-                  : NO_IMAGE_URL
-              }
+              image={getPosterUrl(el.poster_path)}
               movieId={el.id}
               movieName={el.title}
             />

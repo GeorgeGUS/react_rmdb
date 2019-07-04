@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  IMAGE_BASE_URL,
-  NO_IMAGE_URL,
-  POSTER_SIZE,
-  BACKDROP_SIZE
-} from '../../../config';
+import { getBackdropUrl, getPosterUrl } from '../../../config';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import './Info.css';
 
@@ -18,17 +13,14 @@ const MovieInfo = ({ movie, directors = [] }) => {
     vote_average
   } = movie;
   const bgImage = {
-    backgroundImage: `url('${IMAGE_BASE_URL}${BACKDROP_SIZE}${backdrop_path}')`
+    backgroundImage: `url(${getBackdropUrl(backdrop_path)})`
   };
-  const poster = poster_path
-    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${poster_path}`
-    : NO_IMAGE_URL;
   const genresNames = genres.map(g => g.name).join(', ');
   return (
     <div className='rmdb-info' style={bgImage}>
       <div className='rmdb-info-content rmdb-container clearfix'>
         <div className='rmdb-info-thumb'>
-          <MovieThumb image={poster} />
+          <MovieThumb image={getPosterUrl(poster_path)} />
         </div>
         <div className='rmdb-info-text'>
           <h1>{title}</h1>

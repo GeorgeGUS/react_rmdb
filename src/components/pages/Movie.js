@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
 
-import {
-  API_URL,
-  API_KEY,
-  LANG,
-  IMAGE_BASE_URL,
-  NO_IMAGE_URL,
-  POSTER_SIZE
-} from '../../config';
+import { API_URL, API_KEY, LANG, getPosterUrl } from '../../config';
 import Actor from '../elements/Actor/Actor';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieInfo from '../elements/Info/MovieInfo';
@@ -69,10 +62,6 @@ class Movie extends Component {
 
   render() {
     const { movie, directors, actors, loading } = this.state;
-    const poster =
-      movie && movie.poster_path
-        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-        : NO_IMAGE_URL;
     return (
       <main className='rmdb-page'>
         {movie && (
@@ -80,7 +69,7 @@ class Movie extends Component {
             <MetaTags
               title={`RMDB - "${movie.title}"`}
               desc={movie.overview}
-              image={poster}
+              image={getPosterUrl(movie.poster_path)}
             />
             <Breadcrumbs title={movie.title} />
             <MovieInfo movie={movie} directors={directors} />

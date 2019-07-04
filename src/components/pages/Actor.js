@@ -5,9 +5,8 @@ import {
   API_URL,
   API_KEY,
   LANG,
-  IMAGE_BASE_URL,
-  NO_IMAGE_URL,
-  POSTER_SIZE
+  getPosterUrl,
+  getThumbUrl
 } from '../../config';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
@@ -69,10 +68,6 @@ class Actor extends Component {
 
   render() {
     const { actor, movies, loading } = this.state;
-    const poster =
-      actor && actor.profile_path
-        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-        : NO_IMAGE_URL;
     return (
       <div className='rmdb-page'>
         {actor && (
@@ -80,7 +75,7 @@ class Actor extends Component {
             <MetaTags
               title={`RMDB - ${actor.name}`}
               desc={actor.biography}
-              image={poster}
+              image={getPosterUrl(actor.profile_path)}
             />
             <Breadcrumbs title={actor.name} />
             <ActorInfo actor={actor} />
@@ -102,11 +97,7 @@ class Actor extends Component {
                   clickable
                   title={el.title}
                   year={el.release_date && el.release_date.slice(0, 4)}
-                  image={
-                    el.poster_path
-                      ? `${IMAGE_BASE_URL}${POSTER_SIZE}${el.poster_path}`
-                      : NO_IMAGE_URL
-                  }
+                  image={getThumbUrl(el.poster_path)}
                   movieId={el.id}
                   movieName={el.title}
                   gender={actor.gender}
