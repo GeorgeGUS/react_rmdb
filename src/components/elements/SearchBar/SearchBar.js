@@ -16,8 +16,10 @@ class SearchBar extends Component {
     this.timeout = setTimeout(() => {
       const { callback, history } = this.props;
       const value = this.state.value.trim();
-      callback(false, value);
-      history.push(`/search/${value}`);
+      if (value !== '') {
+        callback(false, value);
+        history.push(`/search/${value}`);
+      }
     }, 1000);
   };
 
@@ -43,8 +45,10 @@ class SearchBar extends Component {
         <div className='rmdb-container'>
           <label className='rmdb-searchbar-label'>
             <FontAwesomeIcon className='rmdb-searchbar-icon' icon='search' />
+            <span className='visually-hidden'>Search</span>
             <input
               type='text'
+              name='search'
               className='rmdb-searchbar-input'
               placeholder='Search'
               onChange={this.doSearch}
