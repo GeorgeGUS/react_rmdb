@@ -24,15 +24,15 @@ const MovieInfo = ({ movie, directors = [] }) => {
         </div>
         <div className='rmdb-info-text'>
           <h1>{title}</h1>
-          <h3>Plot</h3>
+          <h2>Plot</h2>
           <p>{overview}</p>
           <div className='rmdb-info-sections'>
             <div className='rmdb-info-section'>
-              <h3>Genres</h3>
+              <h2>Genres</h2>
               <p>{genresNames}</p>
             </div>
             <div className='rmdb-info-section'>
-              <h3>IMDB rating</h3>
+              <h2>IMDB rating</h2>
               <div className='rmdb-rating'>
                 <meter
                   className='rmdb-rating-scale'
@@ -47,7 +47,7 @@ const MovieInfo = ({ movie, directors = [] }) => {
               </div>
             </div>
             <div className='rmdb-info-section'>
-              {directors.length > 1 ? <h3>Directors</h3> : <h3>Director</h3>}
+              {directors.length > 1 ? <h2>Directors</h2> : <h2>Director</h2>}
               <p>{directors.map(({ name }) => name).join(', ')}</p>
             </div>
           </div>

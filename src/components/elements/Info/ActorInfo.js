@@ -13,7 +13,7 @@ const ActorInfo = ({ actor: { profile_path, name, biography } }) => (
         <h1>{name}</h1>
         {biography && (
           <>
-            <h3>Biography</h3>
+            <h2>Biography</h2>
             <p>{biography}</p>
           </>
         )}
