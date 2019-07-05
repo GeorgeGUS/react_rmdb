@@ -5,14 +5,20 @@ body {
 
 h1 {
   font-size: 3rem;
+  margin: 1em 0 0.5em;
 }
 
 h2 {
   font-size: 2rem;
+  margin: 1em 0 0.75em;
 }
 
 h3 {
   font-size: 1.5rem;
+}
+
+img {
+  display: block;
 }
 
 .visually-hidden {
@@ -33,6 +39,25 @@ h3 {
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+@media screen and (max-width: 720px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .rmdb-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .clearfix:after {

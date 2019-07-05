@@ -3,6 +3,7 @@
   background-size: cover;
   background-position: center;
   width: 100%;
+  min-height: 600px;
   padding: 40px 0;
   box-sizing: border-box;
   animation: animateMovieinfo 1s;
@@ -27,35 +28,53 @@
   float: left;
   margin-top: -20px;
   margin-right: 2.4em;
-  margin-bottom: 1em;
+  margin-bottom: 15px;
   width: 350px;
+  height: 525px;
+}
+
+@media screen and (max-width: 870px) {
+  .rmdb-info {
+    min-height: 450px;
+  }
+
+  .rmdb-info-thumb {
+    width: 250px;
+    height: 375px;
+  }
 }
 
 @media screen and (max-width: 720px) {
   .rmdb-info {
+    min-height: 250px;
     padding: 20px 0;
   }
 
   .rmdb-info-thumb {
     width: 200px;
+    height: 300px;
     margin-top: -10px;
-    margin-right: 1.6em;
+    margin-right: 1.25em;
     margin-bottom: 0.5em;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .rmdb-info {
+    min-height: 340px;
+  }
+
   .rmdb-info-thumb {
     width: 100%;
+    height: 400px;
     margin-right: 0;
     margin-bottom: 1em;
   }
 }
 
 .rmdb-info-text {
-  padding: 40px;
-  padding-left: 0;
-  padding-bottom: 0;
+  padding-top: 40px;
+  padding-right: 40px;
 }
 
 .rmdb-info-sections {
@@ -78,8 +97,8 @@
   line-height: 1;
 }
 
-.rmdb-info-content h3 {
-  margin: 0.5em 0;
+.rmdb-info-content h2 {
+  font-size: 1.5rem;
   color: #b3b3b3;
   font-weight: normal;
   text-transform: uppercase;
@@ -88,30 +107,6 @@
 .rmdb-info-content p {
   font-size: 1.2rem;
   line-height: 1.5em;
-}
-
-@media screen and (max-width: 720px) {
-  .rmdb-info-sections {
-    padding-bottom: 20px;
-  }
-
-  .rmdb-info-text {
-    padding: 0;
-  }
-
-  .rmdb-info-content h1 {
-    font-size: 2rem;
-  }
-
-  .rmdb-info-content h3 {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-  }
-
-  .rmdb-info-content p {
-    font-size: 1rem;
-    line-height: 1.25em;
-  }
 }
 
 .rmdb-rating {
@@ -143,6 +138,24 @@ meter::-webkit-meter-even-less-good-value {
 }
 
 @media screen and (max-width: 720px) {
+  .rmdb-info-sections {
+    padding-bottom: 20px;
+  }
+
+  .rmdb-info-text {
+    padding-top: 20px;
+    padding-right: 20px;
+  }
+
+  .rmdb-info-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .rmdb-info-content p {
+    font-size: 1rem;
+    line-height: 1.25em;
+  }
+
   .rmdb-rating-scale {
     width: 170px;
     height: 1.25em;

@@ -19,7 +19,7 @@
   align-items: center;
   margin-right: 1.5em;
   padding: 0.5em 0;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
 }
 
 .rmdb-infobar-info {
@@ -27,7 +27,13 @@
 }
 
 @media screen and (max-width: 720px) {
+  .rmdb-infobar {
+    padding: 10px 0;
+  }
+
   .rmdb-infobar-item {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-right: 1em;
+    padding: 0.25em 0;
   }
 }
