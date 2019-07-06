@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import MetaTags from '../elements/MetaTags/MetaTags';
+// import MetaTags from '../elements/MetaTags/MetaTags';
 
 import {
   API_URL,
   API_KEY,
   LANG,
   getBackdropUrl,
-  getPosterUrl
+  getPosterUrl,
+  setMetaTags
 } from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import HeroImage from '../elements/HeroImage/HeroImage';
@@ -65,14 +66,20 @@ class Home extends Component {
   fetchItems = async endpoint => {
     const { movies, heroImage } = this.state;
     try {
-      const result = await (await fetch(endpoint)).json();
+      const response = await (await fetch(endpoint)).json();
+      // Setting meta tags
+      setMetaTags(
+        'RMDB - Popular Movies',
+        'React Movie (or RMDB) is a database for searching information about movies and actors',
+        getBackdropUrl(response.results[0].backdrop_path)
+      );
       this.setState(
         {
-          movies: [...movies, ...result.results],
-          heroImage: heroImage || result.results[0],
+          movies: [...movies, ...response.results],
+          heroImage: heroImage || response.results[0],
           loading: false,
-          currentPage: result.page,
-          totalPages: result.total_pages
+          currentPage: response.page,
+          totalPages: response.total_pages
         },
         () => {
           // if (searchTerm === '') {
@@ -89,11 +96,6 @@ class Home extends Component {
     const { loading, movies, heroImage, currentPage, totalPages } = this.state;
     return (
       <div className='rmdb-page'>
-        <MetaTags
-          title={`RMDB - Popular Movies`}
-          desc={'This page is made for'}
-          image={heroImage && getBackdropUrl(heroImage.backdrop_path)}
-        />
         {heroImage && (
           <HeroImage
             image={getBackdropUrl(heroImage.backdrop_path)}

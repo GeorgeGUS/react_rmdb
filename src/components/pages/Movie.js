@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import MetaTags from '../elements/MetaTags/MetaTags';
+// import MetaTags from '../elements/MetaTags/MetaTags';
 
-import { API_URL, API_KEY, LANG, getPosterUrl } from '../../config';
+import {
+  API_URL,
+  API_KEY,
+  LANG,
+  getPosterUrl,
+  setMetaTags
+} from '../../config';
 import Actor from '../elements/Actor/Actor';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieInfo from '../elements/Info/MovieInfo';
@@ -35,13 +41,20 @@ class Movie extends Component {
   fetchItems = async endpoint => {
     const { movieId } = this.props.match.params;
     try {
-      const result = await (await fetch(endpoint)).json();
-      if (result.status_code) {
+      const response = await (await fetch(endpoint)).json();
+      // Setting meta tags
+      setMetaTags(
+        `RMDB - "${response.title}"`,
+        response.overview,
+        getPosterUrl(response.poster_path)
+      );
+      if (response.status_code) {
         this.setState({ loading: false });
       } else {
-        this.setState({ movie: result });
+        this.setState({ movie: response });
+
         // ... then fetch actors in the setState cb function
-        const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+        const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=${LANG}`;
         const { crew, cast } = await (await fetch(creditsEndpoint)).json();
         const directors = crew.filter(member => member.job === 'Director');
         this.setState(
@@ -51,7 +64,7 @@ class Movie extends Component {
             loading: false
           },
           () => {
-            localStorage.setItem(`${movieId}`, JSON.stringify(this.state));
+            // localStorage.setItem(`${movieId}`, JSON.stringify(this.state));
           }
         );
       }
@@ -66,11 +79,11 @@ class Movie extends Component {
       <main className='rmdb-page'>
         {movie && (
           <>
-            <MetaTags
+            {/* <MetaTags
               title={`RMDB - "${movie.title}"`}
               desc={movie.overview}
               image={getPosterUrl(movie.poster_path)}
-            />
+            /> */}
             <Breadcrumbs title={movie.title} />
             <MovieInfo movie={movie} directors={directors} />
             <MovieInfoBar movie={movie} />

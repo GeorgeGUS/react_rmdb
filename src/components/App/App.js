@@ -40,16 +40,14 @@ library.add(
 const App = () => {
   return (
     <HashRouter>
-      <React.Fragment>
-        <Header />
-        <Switch>
-          <Route path='/' component={Home} exact />
-          <Route path='/search/:searchTerm' component={Search} exact />
-          <Route path='/movie/:movieId' component={Movie} exact />
-          <Route path='/actor/:actorId' component={Actor} exact />
-          <Route component={NotFound} />
-        </Switch>
-      </React.Fragment>
+      <Header />
+      <Switch>
+        <Route path='/' component={Home} exact />
+        <Route path='/search/:searchTerm' component={Search} exact />
+        <Route path='/movie/:movieId' component={Movie} exact />
+        <Route path='/actor/:actorId' component={Actor} exact />
+        <Route component={NotFound} />
+      </Switch>
     </HashRouter>
   );
 };

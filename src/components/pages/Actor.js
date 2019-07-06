@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import MetaTags from '../elements/MetaTags/MetaTags';
+// import MetaTags from '../elements/MetaTags/MetaTags';
 
 import {
   API_URL,
   API_KEY,
   LANG,
   getPosterUrl,
-  getThumbUrl
+  getThumbUrl,
+  setMetaTags
 } from '../../config';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
@@ -24,7 +25,7 @@ class Actor extends Component {
     loading: false
   };
 
-  componentDidMount() {
+  componentWillMount() {
     const { actorId } = this.props.match.params;
     const storedState = localStorage.getItem(`actor_${actorId}`);
     if (storedState) {
@@ -40,13 +41,19 @@ class Actor extends Component {
   fetchItems = async endpoint => {
     const { actorId } = this.props.match.params;
     try {
-      const result = await (await fetch(endpoint)).json();
-      if (result.status_code) {
+      const response = await (await fetch(endpoint)).json();
+      // Setting meta tags
+      setMetaTags(
+        `RMDB - "${response.name}"`,
+        response.biography,
+        getPosterUrl(response.profile_path)
+      );
+      if (response.status_code) {
         this.setState({ loading: false });
       } else {
-        this.setState({ actor: result });
+        this.setState({ actor: response });
         // ... then fetch actors in the setState cb function
-        const actorEndpoint = `${API_URL}person/${actorId}/movie_credits?api_key=${API_KEY}`;
+        const actorEndpoint = `${API_URL}person/${actorId}/movie_credits?api_key=${API_KEY}&language=${LANG}`;
         const { cast } = await (await fetch(actorEndpoint)).json();
         this.setState(
           {
@@ -72,11 +79,11 @@ class Actor extends Component {
       <div className='rmdb-page'>
         {actor && (
           <>
-            <MetaTags
+            {/* <MetaTags
               title={`RMDB - ${actor.name}`}
               desc={actor.biography}
               image={getPosterUrl(actor.profile_path)}
-            />
+            /> */}
             <Breadcrumbs title={actor.name} />
             <ActorInfo actor={actor} />
             <ActorInfoBar actor={actor} />

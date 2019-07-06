@@ -20,6 +20,40 @@ const getProfileUrl = getImageUrl('w154');
 // const LANG = 'ru-RU';
 const LANG = 'en-US';
 
+const setMetaTags = (title, desc, image) => {
+  document.title = title;
+  const url = document.location.href;
+  const links = [
+    { propName: 'name', prop: 'title', content: title },
+    { propName: 'name', prop: 'description', content: desc },
+    { propName: 'property', prop: 'og:type', content: 'website' },
+    { propName: 'property', prop: 'og:url', content: url },
+    { propName: 'property', prop: 'og:title', content: title },
+    { propName: 'property', prop: 'og:description', content: desc },
+    { propName: 'property', prop: 'og:image', content: image },
+    {
+      propName: 'property',
+      prop: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    { propName: 'property', prop: 'twitter:url', content: url },
+    { propName: 'property', prop: 'twitter:title', content: title },
+    { propName: 'property', prop: 'twitter:description', content: desc },
+    { propName: 'property', prop: 'twitter:image', content: image }
+  ];
+  const oldLinks = document.head.querySelectorAll('[data-mt]');
+  [...oldLinks].forEach(link => document.head.removeChild(link));
+  links.forEach(({ propName, prop, content }) => {
+    if (content) {
+      const link = document.createElement('meta');
+      link.setAttribute(propName, prop);
+      link.content = content;
+      link.dataset['mt'] = true;
+      document.head.appendChild(link);
+    }
+  });
+};
+
 export {
   API_URL,
   API_KEY,
@@ -27,5 +61,6 @@ export {
   getBackdropUrl,
   getPosterUrl,
   getThumbUrl,
-  getProfileUrl
+  getProfileUrl,
+  setMetaTags
 };
