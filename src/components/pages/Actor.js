@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-// import MetaTags from '../elements/MetaTags/MetaTags';
+import MetaTags from '../elements/MetaTags/MetaTags';
 
 import {
   API_URL,
   API_KEY,
   LANG,
   getPosterUrl,
-  getThumbUrl,
-  setMetaTags
+  getThumbUrl
 } from '../../config';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
@@ -25,7 +24,7 @@ class Actor extends Component {
     loading: false
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { actorId } = this.props.match.params;
     const storedState = localStorage.getItem(`actor_${actorId}`);
     if (storedState) {
@@ -42,12 +41,6 @@ class Actor extends Component {
     const { actorId } = this.props.match.params;
     try {
       const response = await (await fetch(endpoint)).json();
-      // Setting meta tags
-      setMetaTags(
-        `RMDB - "${response.name}"`,
-        response.biography,
-        getPosterUrl(response.profile_path)
-      );
       if (response.status_code) {
         this.setState({ loading: false });
       } else {
@@ -79,11 +72,11 @@ class Actor extends Component {
       <div className='rmdb-page'>
         {actor && (
           <>
-            {/* <MetaTags
+            <MetaTags
               title={`RMDB - ${actor.name}`}
               desc={actor.biography}
               image={getPosterUrl(actor.profile_path)}
-            /> */}
+            />
             <Breadcrumbs title={actor.name} />
             <ActorInfo actor={actor} />
             <ActorInfoBar actor={actor} />

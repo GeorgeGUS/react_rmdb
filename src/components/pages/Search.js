@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-// import MetaTags from '../elements/MetaTags/MetaTags';
+import MetaTags from '../elements/MetaTags/MetaTags';
 
-import {
-  API_URL,
-  API_KEY,
-  LANG,
-  getPosterUrl,
-  setMetaTags
-} from '../../config';
+import { API_URL, API_KEY, LANG, getPosterUrl } from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
@@ -60,15 +54,10 @@ class Search extends Component {
   };
 
   fetchItems = async endpoint => {
-    const { movies, searchTerm } = this.state;
     try {
       const response = await (await fetch(endpoint)).json();
-      setMetaTags(
-        `RMDB - Search: ${searchTerm}`,
-        `Search results for "${searchTerm}"`
-      );
       this.setState({
-        movies: [...movies, ...response.results],
+        movies: [...this.state.movies, ...response.results],
         loading: false,
         currentPage: response.page,
         totalPages: response.total_pages
@@ -83,11 +72,11 @@ class Search extends Component {
     const title = `Search results for "${searchTerm}"`;
     return (
       <div className='rmdb-page'>
-        {/* <MetaTags
+        <MetaTags
           title={`RMDB - Search: ${searchTerm}`}
           desc={title}
           image={getPosterUrl(movies[0] && movies[0].poster_path)}
-        /> */}
+        />
         <SearchBar callback={this.updateItems} />
         <FourColGrid header={title} loading={loading}>
           {movies.map(el => (
