@@ -7,36 +7,6 @@ import Movie from '../pages/Movie';
 import Search from '../pages/Search';
 import Actor from '../pages/Actor';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import {
-  faSearch,
-  faTicketAlt,
-  faGenderless,
-  faMars,
-  faVenus,
-  faGlobe
-} from '@fortawesome/free-solid-svg-icons';
-
-import {
-  faCalendarAlt,
-  faClock,
-  faMoneyBillAlt
-} from '@fortawesome/free-regular-svg-icons';
-
-library.add(
-  fab,
-  faSearch,
-  faCalendarAlt,
-  faClock,
-  faMoneyBillAlt,
-  faTicketAlt,
-  faGenderless,
-  faMars,
-  faVenus,
-  faGlobe
-);
-
 const App = () => {
   return (
     <HashRouter>
