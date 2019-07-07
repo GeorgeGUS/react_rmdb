@@ -17,8 +17,8 @@ const MovieThumb = ({
   return (
     <div className='rmdb-moviethumb'>
       {clickable ? (
-        <Link to={`/movie/${movieId}`}>
-          <img src={image} alt={title} />
+        <Link to={`/movie/${movieId}`} className='rmdb-moviethumb-wrapper'>
+          <img className='rmdb-moviethumb-image' src={image} alt={title} />
           <p className='rmdb-moviethumb-title'>
             “{title}”{year ? `, ${year}` : ''}
             <br />
@@ -28,7 +28,7 @@ const MovieThumb = ({
           </p>
         </Link>
       ) : (
-        <img src={image} alt='moviethumb' />
+        <img className='rmdb-moviethumb-image' src={image} alt='moviethumb' />
       )}
     </div>
   );

@@ -2,10 +2,10 @@
   height: 100%;
 }
 
-.rmdb-moviethumb a {
+.rmdb-moviethumb-wrapper {
   display: block;
-  height: 100%;
   position: relative;
+  padding-bottom: 150%;
   text-decoration: none;
 }
 
@@ -20,6 +20,7 @@
   font-size: 1.2rem;
   color: #fff;
   background-color: #000d;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 550px) {
@@ -32,11 +33,17 @@
   transform: translate(0);
 }
 
-.rmdb-moviethumb img {
+.rmdb-moviethumb-image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.3s;
   box-sizing: border-box;
+}
+
+.rmdb-moviethumb-wrapper .rmdb-moviethumb-image {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
