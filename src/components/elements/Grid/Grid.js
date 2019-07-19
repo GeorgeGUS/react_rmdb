@@ -2,9 +2,9 @@ import React from 'react';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 import ErrorBoundary from '../../ErrorBoundary';
-import './FourColGrid.css';
+import './Grid.css';
 
-const FourColGrid = ({ children, header, loading, isActors }) => {
+const Grid = ({ children, header, loading, isActors }) => {
   const renderElements = () =>
     children &&
     children.map((el, i) => (
@@ -31,10 +31,10 @@ const FourColGrid = ({ children, header, loading, isActors }) => {
   );
 };
 
-FourColGrid.propTypes = {
+Grid.propTypes = {
   header: PropTypes.string,
   loading: PropTypes.bool,
   isActors: PropTypes.bool
 };
 
-export default FourColGrid;
+export default Grid;

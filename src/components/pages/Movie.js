@@ -4,7 +4,7 @@ import RMDBService from '../../services/RMDBService';
 
 import { getPosterUrl } from '../../config';
 import Actor from '../elements/Actor/Actor';
-import FourColGrid from '../elements/FourColGrid/FourColGrid';
+import Grid from '../elements/Grid/Grid';
 import MovieInfo from '../elements/Info/MovieInfo';
 import MovieInfoBar from '../elements/InfoBar/MovieInfoBar';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
@@ -29,11 +29,11 @@ const Movie = ({ response, loading }) => {
         </>
       )}
       {actors && (
-        <FourColGrid header={'Actors'} loading={loading} isActors>
+        <Grid header={'Actors'} loading={loading} isActors>
           {actors.map(actor => (
             <Actor key={actor.name} actor={actor} />
           ))}
-        </FourColGrid>
+        </Grid>
       )}
       {loading && <Spinner />}
       {!actors && !loading && <h1>Not found!</h1>}

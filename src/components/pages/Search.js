@@ -3,7 +3,7 @@ import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
 import { getPosterUrl } from '../../config';
-import FourColGrid from '../elements/FourColGrid/FourColGrid';
+import Grid from '../elements/Grid/Grid';
 
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
@@ -25,7 +25,7 @@ const Search = ({
     <div className='rmdb-page'>
       <MetaTags title={`RMDB - Search: ${searchTerm}`} desc={title} />
       <SearchBar onSubmit={updateItems} />
-      <FourColGrid header={title} loading={loading}>
+      <Grid header={title} loading={loading}>
         {movies.map(el => (
           <MovieThumb
             key={el.id}
@@ -37,7 +37,7 @@ const Search = ({
             movieName={el.title}
           />
         ))}
-      </FourColGrid>
+      </Grid>
       {loading && <Spinner />}
       {currentPage < totalPages && !loading && (
         <LoadMoreBtn text='Load More' onClick={updateItems} />

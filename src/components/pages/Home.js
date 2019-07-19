@@ -3,7 +3,7 @@ import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
 import { getBackdropUrl, getPosterUrl } from '../../config';
-import FourColGrid from '../elements/FourColGrid/FourColGrid';
+import Grid from '../elements/Grid/Grid';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
@@ -29,7 +29,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
         text={heroImage.overview}
       />
       <SearchBar onSubmit={updateItems} />
-      <FourColGrid header={'Popular Movies'} loading={loading}>
+      <Grid header={'Popular Movies'} loading={loading}>
         {movies.map(el => (
           <MovieThumb
             key={el.id}
@@ -41,7 +41,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
             movieName={el.title}
           />
         ))}
-      </FourColGrid>
+      </Grid>
       {loading && <Spinner />}
       {currentPage < totalPages && !loading && (
         <LoadMoreBtn text='Load More' onClick={updateItems} />

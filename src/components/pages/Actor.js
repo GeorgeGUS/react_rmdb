@@ -6,7 +6,7 @@ import { getPosterUrl, getThumbUrl } from '../../config';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
 import ActorInfoBar from '../elements/InfoBar/ActorInfoBar';
-import FourColGrid from '../elements/FourColGrid/FourColGrid';
+import Grid from '../elements/Grid/Grid';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import Spinner from '../elements/Spinner/Spinner';
 
@@ -29,7 +29,7 @@ const Actor = ({ response, loading }) => {
         </>
       )}
       {movies && (
-        <FourColGrid
+        <Grid
           header={`${movies.length} Movies with ${response.name}`}
           loading={loading}
         >
@@ -49,7 +49,7 @@ const Actor = ({ response, loading }) => {
                 character={el.character}
               />
             ))}
-        </FourColGrid>
+        </Grid>
       )}
       {loading && <Spinner />}
       {!movies && !loading && <h1>Not found!</h1>}
