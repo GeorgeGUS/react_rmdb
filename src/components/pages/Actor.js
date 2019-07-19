@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
@@ -12,55 +12,51 @@ import Spinner from '../elements/Spinner/Spinner';
 
 import './page.css';
 
-class Actor extends Component {
-  render() {
-    const { response, loading } = this.props;
-    const actor = response;
-    const movies = actor && actor.movie_credits.cast;
-    return (
-      <div className='rmdb-page'>
-        {actor && (
-          <>
-            <MetaTags
-              title={`RMDB - ${actor.name}`}
-              desc={actor.biography}
-              image={getPosterUrl(actor.profile_path)}
-            />
-            <Breadcrumbs title={actor.name} />
-            <ActorInfo actor={actor} />
-            <ActorInfoBar actor={actor} />
-          </>
-        )}
-        {movies && (
-          <FourColGrid
-            header={`${movies.length} Movies with ${actor.name}`}
-            loading={loading}
-          >
-            {movies
-              .sort((a, b) => {
-                return new Date(b.release_date) - new Date(a.release_date);
-              })
-              .map(el => (
-                <MovieThumb
-                  key={el.id}
-                  clickable
-                  title={el.title}
-                  year={el.release_date && el.release_date.slice(0, 4)}
-                  image={getThumbUrl(el.poster_path)}
-                  movieId={el.id}
-                  movieName={el.title}
-                  gender={actor.gender}
-                  character={el.character}
-                />
-              ))}
-          </FourColGrid>
-        )}
-        {loading && <Spinner />}
-        {!movies && !loading && <h1>Not found!</h1>}
-      </div>
-    );
-  }
-}
+const Actor = ({ response, loading }) => {
+  const movies = response && response.movie_credits.cast;
+  return (
+    <div className='rmdb-page'>
+      {response && (
+        <>
+          <MetaTags
+            title={`RMDB - ${response.name}`}
+            desc={response.biography}
+            image={getPosterUrl(response.profile_path)}
+          />
+          <Breadcrumbs title={response.name} />
+          <ActorInfo actor={response} />
+          <ActorInfoBar actor={response} />
+        </>
+      )}
+      {movies && (
+        <FourColGrid
+          header={`${movies.length} Movies with ${response.name}`}
+          loading={loading}
+        >
+          {movies
+            .sort((a, b) => {
+              return new Date(b.release_date) - new Date(a.release_date);
+            })
+            .map(el => (
+              <MovieThumb
+                key={el.id}
+                clickable
+                title={el.title}
+                year={el.release_date && el.release_date.slice(0, 4)}
+                image={getThumbUrl(el.poster_path)}
+                movieId={el.id}
+                movieName={el.title}
+                gender={response.gender}
+                character={el.character}
+              />
+            ))}
+        </FourColGrid>
+      )}
+      {loading && <Spinner />}
+      {!movies && !loading && <h1>Not found!</h1>}
+    </div>
+  );
+};
 
 export default RMDBService(Actor, 'person', null, [
   'images',

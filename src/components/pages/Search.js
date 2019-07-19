@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
@@ -12,41 +12,38 @@ import Spinner from '../elements/Spinner/Spinner';
 
 import './page.css';
 
-class Search extends Component {
-  render() {
-    const {
-      loading,
-      movies,
-      currentPage,
-      totalPages,
-      updateItems,
-      searchTerm
-    } = this.props;
-    const title = `Search results for "${searchTerm}"`;
-    return (
-      <div className='rmdb-page'>
-        <MetaTags title={`RMDB - Search: ${searchTerm}`} desc={title} />
-        <SearchBar onSubmit={updateItems} />
-        <FourColGrid header={title} loading={loading}>
-          {movies.map(el => (
-            <MovieThumb
-              key={el.id}
-              clickable
-              title={el.title}
-              year={el.release_date && el.release_date.slice(0, 4)}
-              image={getPosterUrl(el.poster_path)}
-              movieId={el.id}
-              movieName={el.title}
-            />
-          ))}
-        </FourColGrid>
-        {loading && <Spinner />}
-        {currentPage < totalPages && !loading && (
-          <LoadMoreBtn text='Load More' onClick={updateItems} />
-        )}
-      </div>
-    );
-  }
-}
+const Search = ({
+  loading,
+  movies,
+  currentPage,
+  totalPages,
+  updateItems,
+  searchTerm
+}) => {
+  const title = `Search results for "${searchTerm}"`;
+  return (
+    <div className='rmdb-page'>
+      <MetaTags title={`RMDB - Search: ${searchTerm}`} desc={title} />
+      <SearchBar onSubmit={updateItems} />
+      <FourColGrid header={title} loading={loading}>
+        {movies.map(el => (
+          <MovieThumb
+            key={el.id}
+            clickable
+            title={el.title}
+            year={el.release_date && el.release_date.slice(0, 4)}
+            image={getPosterUrl(el.poster_path)}
+            movieId={el.id}
+            movieName={el.title}
+          />
+        ))}
+      </FourColGrid>
+      {loading && <Spinner />}
+      {currentPage < totalPages && !loading && (
+        <LoadMoreBtn text='Load More' onClick={updateItems} />
+      )}
+    </div>
+  );
+};
 
 export default RMDBService(Search, 'search', 'movie');
