@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { API_URL, API_KEY, LANG } from '../config';
 
-const RMDBService = (Wrapped, ...compProps) => {
+const RMDBService = (Wrapped, ...queryProps) => {
   return class extends Component {
     state = {
       movies: [],
@@ -22,7 +22,7 @@ const RMDBService = (Wrapped, ...compProps) => {
     };
 
     componentDidMount() {
-      this._endpoint = this.createEndpoint(...compProps);
+      this._endpoint = this.createEndpoint(...queryProps);
       this.fetchItems();
     }
 
@@ -44,8 +44,7 @@ const RMDBService = (Wrapped, ...compProps) => {
             movies: [...movies, ...response.results],
             loading: false,
             currentPage: response.page,
-            totalPages: response.total_pages,
-            searchTerm: this.props.match.params.searchTerm
+            totalPages: response.total_pages
           }));
         } else {
           this.setState({ response, loading: false });

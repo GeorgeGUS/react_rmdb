@@ -28,7 +28,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
         title={heroImage.original_title}
         text={heroImage.overview}
       />
-      <SearchBar onSubmit={updateItems} />
+      <SearchBar />
       <Grid header={'Popular Movies'} loading={loading}>
         {movies.map(el => (
           <MovieThumb

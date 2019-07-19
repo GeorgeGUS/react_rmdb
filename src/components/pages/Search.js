@@ -24,7 +24,7 @@ const Search = ({
   return (
     <div className='rmdb-page'>
       <MetaTags title={`RMDB - Search: ${searchTerm}`} desc={title} />
-      <SearchBar onSubmit={updateItems} />
+      <SearchBar />
       <Grid header={title} loading={loading}>
         {movies.map(el => (
           <MovieThumb

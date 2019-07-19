@@ -19,14 +19,12 @@ const Grid = ({ children, header, loading, isActors }) => {
 
   return (
     <ErrorBoundary>
-      {!loading && (
-        <div className='rmdb-grid'>
-          <div className='rmdb-container'>
-            {header && <h2>{header}</h2>}
-            <div className={contentClasses}>{renderElements()}</div>
-          </div>
+      <div className='rmdb-grid'>
+        <div className='rmdb-container'>
+          {header && !loading && <h2>{header}</h2>}
+          <div className={contentClasses}>{renderElements()}</div>
         </div>
-      )}
+      </div>
     </ErrorBoundary>
   );
 };
