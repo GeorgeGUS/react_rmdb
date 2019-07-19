@@ -36,7 +36,7 @@ const Movie = ({ response, loading }) => {
         </FourColGrid>
       )}
       {loading && <Spinner />}
-      {!actors && !loading && <h1>No actor found!</h1>}
+      {!actors && !loading && <h1>Not found!</h1>}
     </main>
   );
 };

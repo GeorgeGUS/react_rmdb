@@ -45,7 +45,6 @@ const Actor = ({ response, loading }) => {
                 year={el.release_date && el.release_date.slice(0, 4)}
                 image={getThumbUrl(el.poster_path)}
                 movieId={el.id}
-                movieName={el.title}
                 gender={response.gender}
                 character={el.character}
               />

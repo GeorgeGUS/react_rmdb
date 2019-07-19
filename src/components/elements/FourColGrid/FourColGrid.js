@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
+import ErrorBoundary from '../../ErrorBoundary';
 import './FourColGrid.css';
 
 const FourColGrid = ({ children, header, loading, isActors }) => {
@@ -17,12 +18,16 @@ const FourColGrid = ({ children, header, loading, isActors }) => {
   });
 
   return (
-    <div className='rmdb-grid'>
-      <div className='rmdb-container'>
-        {header && !loading ? <h2>{header}</h2> : null}
-        <div className={contentClasses}>{renderElements()}</div>
-      </div>
-    </div>
+    <ErrorBoundary>
+      {!loading && (
+        <div className='rmdb-grid'>
+          <div className='rmdb-container'>
+            {header && <h2>{header}</h2>}
+            <div className={contentClasses}>{renderElements()}</div>
+          </div>
+        </div>
+      )}
+    </ErrorBoundary>
   );
 };
 
