@@ -3,18 +3,20 @@ import { getBackdropUrl, getPosterUrl } from '../../../config';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import './Info.css';
 
-const MovieInfo = ({ movie, directors = [] }) => {
+const MovieInfo = ({ movie }) => {
   const {
     backdrop_path,
     poster_path,
     title,
     genres,
     overview,
-    vote_average
+    vote_average,
+    credits
   } = movie;
   const bgImage = {
     backgroundImage: `url(${getBackdropUrl(backdrop_path)})`
   };
+  const directors = credits.crew.filter(crew => crew.job === 'Director');
   const genresNames = genres.map(g => g.name).join(', ');
   return (
     <div className='rmdb-info' style={bgImage}>

@@ -14,8 +14,8 @@ const App = () => {
       <Switch>
         <Route path='/' component={Home} exact />
         <Route path='/search/:searchTerm' component={Search} exact />
-        <Route path='/movie/:movieId' component={Movie} exact />
-        <Route path='/actor/:actorId' component={Actor} exact />
+        <Route path='/movie/:id' component={Movie} exact />
+        <Route path='/actor/:id' component={Actor} exact />
         <Route component={NotFound} />
       </Switch>
     </HashRouter>

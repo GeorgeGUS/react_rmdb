@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
+import RMDBService from '../../services/RMDBService';
 
-import {
-  API_URL,
-  API_KEY,
-  LANG,
-  getPosterUrl,
-  getThumbUrl
-} from '../../config';
+import { getPosterUrl, getThumbUrl } from '../../config';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
 import ActorInfoBar from '../elements/InfoBar/ActorInfoBar';
@@ -18,56 +13,10 @@ import Spinner from '../elements/Spinner/Spinner';
 import './page.css';
 
 class Actor extends Component {
-  state = {
-    actor: null,
-    movies: null,
-    loading: false
-  };
-
-  componentDidMount() {
-    const { actorId } = this.props.match.params;
-    const storedState = localStorage.getItem(`actor_${actorId}`);
-    if (storedState) {
-      this.setState({ ...JSON.parse(storedState) });
-      return;
-    }
-    this.setState({ loading: true });
-    // Fisrt fetch the person...
-    const endpoint = `${API_URL}person/${actorId}?api_key=${API_KEY}&language=${LANG}`;
-    this.fetchItems(endpoint);
-  }
-
-  fetchItems = async endpoint => {
-    const { actorId } = this.props.match.params;
-    try {
-      const response = await (await fetch(endpoint)).json();
-      if (response.status_code) {
-        this.setState({ loading: false });
-      } else {
-        this.setState({ actor: response });
-        // ... then fetch actors in the setState cb function
-        const actorEndpoint = `${API_URL}person/${actorId}/movie_credits?api_key=${API_KEY}&language=${LANG}`;
-        const { cast } = await (await fetch(actorEndpoint)).json();
-        this.setState(
-          {
-            movies: cast,
-            loading: false
-          },
-          () => {
-            localStorage.setItem(
-              `actor_${actorId}`,
-              JSON.stringify(this.state)
-            );
-          }
-        );
-      }
-    } catch (e) {
-      console.error('Fetch error:', e);
-    }
-  };
-
   render() {
-    const { actor, movies, loading } = this.state;
+    const { response, loading } = this.props;
+    const actor = response;
+    const movies = actor && actor.movie_credits.cast;
     return (
       <div className='rmdb-page'>
         {actor && (
@@ -113,4 +62,8 @@ class Actor extends Component {
   }
 }
 
-export default Actor;
+export default RMDBService(Actor, 'person', null, [
+  'images',
+  'movie_credits',
+  'tv_credits'
+]);

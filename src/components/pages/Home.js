@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
+import RMDBService from '../../services/RMDBService';
 
-import {
-  API_URL,
-  API_KEY,
-  LANG,
-  getBackdropUrl,
-  getPosterUrl
-} from '../../config';
+import { getBackdropUrl, getPosterUrl } from '../../config';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
@@ -18,81 +13,30 @@ import Spinner from '../elements/Spinner/Spinner';
 import './page.css';
 
 class Home extends Component {
-  state = {
-    movies: [],
-    heroImage: null,
-    loading: false,
-    currentPage: 0,
-    totalPages: 0,
-    searchTerm: ''
-  };
-
-  componentDidMount() {
-    this.setState({ loading: true });
-    this.fetchItems(this.popularEP(false, ''));
-  }
-
-  createEndpoint = type => (loadMore, searchTerm) =>
-    `${API_URL}${type}?api_key=${API_KEY}&language=${LANG}&page=${loadMore &&
-      this.state.currentPage + 1}&query=${searchTerm}`;
-
-  popularEP = this.createEndpoint('movie/popular');
-  searchEP = this.createEndpoint('search/movie');
-
-  updateItems = (loadMore, searchTerm) => {
-    this.setState(
-      {
-        movies: loadMore ? [...this.state.movies] : [],
-        loading: true,
-        searchTerm: loadMore ? this.state.searchTerm : searchTerm
-      },
-      () => {
-        const { searchTerm: stateSearchTerm } = this.state;
-        this.fetchItems(
-          !stateSearchTerm
-            ? this.popularEP(loadMore, '')
-            : this.searchEP(loadMore, stateSearchTerm)
-        );
-      }
-    );
-  };
-
-  fetchItems = async endpoint => {
-    try {
-      const response = await (await fetch(endpoint)).json();
-      this.setState(({ movies, heroImage }) => ({
-        movies: [...movies, ...response.results],
-        heroImage: heroImage || response.results[0],
-        loading: false,
-        currentPage: response.page,
-        totalPages: response.total_pages
-      }));
-    } catch (e) {
-      console.error('Fetch error:', e);
-    }
-  };
-
   render() {
-    const { loading, movies, heroImage, currentPage, totalPages } = this.state;
+    const {
+      loading,
+      movies,
+      currentPage,
+      totalPages,
+      updateItems
+    } = this.props;
+    const heroImage = movies.length > 0 ? movies[0] : {};
     return (
       <div className='rmdb-page'>
-        {heroImage && (
-          <>
-            <MetaTags
-              title={'RMDB - Popular Movies'}
-              desc={
-                'React Movie (or RMDB) is a database for searching information about movies and actors'
-              }
-              image={getBackdropUrl(heroImage.backdrop_path)}
-            />
-            <HeroImage
-              image={getBackdropUrl(heroImage.backdrop_path)}
-              title={heroImage.original_title}
-              text={heroImage.overview}
-            />
-          </>
-        )}
-        <SearchBar callback={this.updateItems} />
+        <MetaTags
+          title={'RMDB - Popular Movies'}
+          desc={
+            'React Movie (or RMDB) is a database for searching information about movies and actors'
+          }
+          image={getBackdropUrl(heroImage.backdrop_path)}
+        />
+        <HeroImage
+          image={getBackdropUrl(heroImage.backdrop_path)}
+          title={heroImage.original_title}
+          text={heroImage.overview}
+        />
+        <SearchBar onSubmit={updateItems} />
         <FourColGrid header={'Popular Movies'} loading={loading}>
           {movies.map(el => (
             <MovieThumb
@@ -108,11 +52,11 @@ class Home extends Component {
         </FourColGrid>
         {loading && <Spinner />}
         {currentPage < totalPages && !loading && (
-          <LoadMoreBtn text='Load More' onClick={this.updateItems} />
+          <LoadMoreBtn text='Load More' onClick={updateItems} />
         )}
       </div>
     );
   }
 }
 
-export default Home;
+export default RMDBService(Home, 'movie', 'popular');

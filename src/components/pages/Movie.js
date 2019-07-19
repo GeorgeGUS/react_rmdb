@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
+import RMDBService from '../../services/RMDBService';
 
-import { API_URL, API_KEY, LANG, getPosterUrl } from '../../config';
+import { getPosterUrl } from '../../config';
 import Actor from '../elements/Actor/Actor';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieInfo from '../elements/Info/MovieInfo';
@@ -12,68 +13,21 @@ import Spinner from '../elements/Spinner/Spinner';
 import './page.css';
 
 class Movie extends Component {
-  state = {
-    movie: null,
-    actors: null,
-    directors: [],
-    loading: false
-  };
-
-  componentDidMount() {
-    const { movieId } = this.props.match.params;
-    const storedState = localStorage.getItem(`${movieId}`);
-    if (storedState) {
-      this.setState({ ...JSON.parse(storedState) });
-      return;
-    }
-    this.setState({ loading: true });
-    // Fisrt fetch the movie...
-    const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=${LANG}`;
-    this.fetchItems(endpoint);
-  }
-
-  fetchItems = async endpoint => {
-    const { movieId } = this.props.match.params;
-    try {
-      const response = await (await fetch(endpoint)).json();
-      if (response.status_code) {
-        this.setState({ loading: false });
-      } else {
-        this.setState({ movie: response });
-        // ... then fetch actors in the setState cb function
-        const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=${LANG}`;
-        const { crew, cast } = await (await fetch(creditsEndpoint)).json();
-        const directors = crew.filter(member => member.job === 'Director');
-        this.setState(
-          {
-            actors: cast,
-            directors,
-            loading: false
-          },
-          () => {
-            // localStorage.setItem(`${movieId}`, JSON.stringify(this.state));
-          }
-        );
-      }
-    } catch (e) {
-      console.error('Fetch error:', e);
-    }
-  };
-
   render() {
-    const { movie, directors, actors, loading } = this.state;
+    const { response, loading } = this.props;
+    const actors = response && response.credits.cast;
     return (
       <main className='rmdb-page'>
-        {movie && (
+        {response && (
           <>
             <MetaTags
-              title={`RMDB - "${movie.title}"`}
-              desc={movie.overview}
-              image={getPosterUrl(movie.poster_path)}
+              title={`RMDB - "${response.title}"`}
+              desc={response.overview}
+              image={getPosterUrl(response.poster_path)}
             />
-            <Breadcrumbs title={movie.title} />
-            <MovieInfo movie={movie} directors={directors} />
-            <MovieInfoBar movie={movie} />
+            <Breadcrumbs title={response.title} />
+            <MovieInfo movie={response} />
+            <MovieInfoBar movie={response} />
           </>
         )}
         {actors && (
@@ -84,10 +38,10 @@ class Movie extends Component {
           </FourColGrid>
         )}
         {loading && <Spinner />}
-        {!actors && !loading && <h1>No movie found!</h1>}
+        {!actors && !loading && <h1>No actor found!</h1>}
       </main>
     );
   }
 }
 
-export default Movie;
+export default RMDBService(Movie, 'movie', null, ['credits', 'videos']);

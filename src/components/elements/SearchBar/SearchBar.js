@@ -10,17 +10,20 @@ class SearchBar extends Component {
 
   timeout = null;
 
-  doSearch = ({ target: { value } }) => {
-    this.setState({ value });
+  handleSubmit = () => {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      const { callback, history } = this.props;
+      const { onSubmit, history } = this.props;
       const value = this.state.value.trim();
       if (value !== '') {
-        callback(false, value);
+        onSubmit(false);
         history.push(`/search/${value}`);
       }
     }, 1000);
+  };
+
+  doSearch = ({ target: { value } }) => {
+    this.setState({ value }, this.handleSubmit);
   };
 
   componentDidMount() {
@@ -36,7 +39,7 @@ class SearchBar extends Component {
   }
 
   componentWillUnmount() {
-    this.setState({ value: '' });
+    clearTimeout(this.timeout);
   }
 
   render() {
