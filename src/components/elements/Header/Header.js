@@ -20,7 +20,7 @@ const Header = () => {
         >
           <img
             className='rmdb-tmdb-logo'
-            src={`${process.env.PUBLIC_URL}/images/tmdb_logo.png`}
+            src={`${process.env.PUBLIC_URL}/images/movie-db-logo.svg`}
             alt='tmdb-logo'
           />
         </a>
