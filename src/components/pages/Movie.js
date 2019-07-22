@@ -3,6 +3,7 @@ import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
 import { getPosterUrl } from '../../config';
+import Page from '../elements/Page/Page';
 import Actor from '../elements/Actor/Actor';
 import Grid from '../elements/Grid/Grid';
 import MovieInfo from '../elements/Info/MovieInfo';
@@ -10,12 +11,10 @@ import MovieInfoBar from '../elements/InfoBar/MovieInfoBar';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import Spinner from '../elements/Spinner/Spinner';
 
-import './page.css';
-
 const Movie = ({ response, loading }) => {
   const actors = response && response.credits.cast;
   return (
-    <main className='rmdb-page'>
+    <Page>
       {response && (
         <>
           <MetaTags
@@ -37,7 +36,7 @@ const Movie = ({ response, loading }) => {
       )}
       {loading && <Spinner />}
       {!actors && !loading && <h1>Not found!</h1>}
-    </main>
+    </Page>
   );
 };
 

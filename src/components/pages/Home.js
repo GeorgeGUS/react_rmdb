@@ -3,6 +3,7 @@ import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
 import { getBackdropUrl, getPosterUrl } from '../../config';
+import Page from '../elements/Page/Page';
 import Grid from '../elements/Grid/Grid';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
@@ -10,12 +11,10 @@ import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
-import './page.css';
-
 const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
   const heroImage = movies.length > 0 ? movies[0] : {};
   return (
-    <div className='rmdb-page'>
+    <Page>
       <MetaTags
         title={'RMDB - Popular Movies'}
         desc={
@@ -46,7 +45,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
       {currentPage < totalPages && !loading && (
         <LoadMoreBtn text='Load More' onClick={updateItems} />
       )}
-    </div>
+    </Page>
   );
 };
 

@@ -3,14 +3,12 @@ import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
 import { getPosterUrl } from '../../config';
+import Page from '../elements/Page/Page';
 import Grid from '../elements/Grid/Grid';
-
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
-
-import './page.css';
 
 const Search = ({
   loading,
@@ -22,7 +20,7 @@ const Search = ({
 }) => {
   const title = `Search results for "${searchTerm}"`;
   return (
-    <div className='rmdb-page'>
+    <Page>
       <MetaTags title={`RMDB - Search: ${searchTerm}`} desc={title} />
       <SearchBar />
       <Grid header={title} loading={loading}>
@@ -42,7 +40,7 @@ const Search = ({
       {currentPage < totalPages && !loading && (
         <LoadMoreBtn text='Load More' onClick={updateItems} />
       )}
-    </div>
+    </Page>
   );
 };
 
