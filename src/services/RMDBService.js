@@ -6,13 +6,11 @@ const RMDBService = (Wrapped, ...queryProps) => {
     state = {
       movies: [],
       response: null,
-      loading: false,
+      loading: true,
       currentPage: 1,
       totalPages: 1,
       searchTerm: this.props.match.params.searchTerm || ''
     };
-
-    _endpoint = '';
 
     createEndpoint = (type, typeId, options) => () => {
       const { id } = this.props.match.params;
@@ -21,8 +19,9 @@ const RMDBService = (Wrapped, ...queryProps) => {
         id}?api_key=${API_KEY}&language=${LANG}&append_to_response=${options}&query=${searchTerm}&page=${currentPage}`;
     };
 
+    _endpoint = this.createEndpoint(...queryProps);
+
     componentDidMount() {
-      this._endpoint = this.createEndpoint(...queryProps);
       this.fetchItems();
     }
 
@@ -34,7 +33,6 @@ const RMDBService = (Wrapped, ...queryProps) => {
     }
 
     fetchItems = async () => {
-      this.setState({ loading: true });
       try {
         const response = await (await fetch(this._endpoint())).json();
         if (response.status_code) {
