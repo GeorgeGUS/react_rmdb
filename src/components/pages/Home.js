@@ -2,7 +2,7 @@ import React from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
-import { getBackdropUrl, getPosterUrl } from '../../config';
+import { getBackdropUrl } from '../../config';
 import Page from '../elements/Page/Page';
 import Grid from '../elements/Grid/Grid';
 import HeroImage from '../elements/HeroImage/HeroImage';
@@ -29,16 +29,8 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
       />
       <SearchBar />
       <Grid header={'Popular Movies'} loading={loading}>
-        {movies.map(el => (
-          <MovieThumb
-            key={el.id}
-            clickable
-            title={el.title}
-            year={el.release_date && el.release_date.slice(0, 4)}
-            image={getPosterUrl(el.poster_path)}
-            movieId={el.id}
-            movieName={el.title}
-          />
+        {movies.map(movie => (
+          <MovieThumb key={movie.id} clickable movie={movie} />
         ))}
       </Grid>
       {loading && <Spinner />}

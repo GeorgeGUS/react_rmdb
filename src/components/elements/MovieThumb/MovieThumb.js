@@ -1,23 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getThumbUrl } from '../../../config';
 import { Link } from 'react-router-dom';
 import './MovieThumb.css';
 
-const genders = ['Itself', 'Herself', 'Himself'];
+const genders = ['Unknown', 'Herself', 'Himself'];
 
-const MovieThumb = ({
-  clickable,
-  image,
-  title,
-  year,
-  movieId,
-  gender,
-  character
-}) => {
+const MovieThumb = ({ clickable, gender, movie = {}, imagePath }) => {
+  const { id, title, poster_path, character, release_date } = movie;
+  const image = getThumbUrl(poster_path || imagePath);
+  const year = release_date && release_date.slice(0, 4);
   return (
     <div className='rmdb-moviethumb'>
       {clickable ? (
-        <Link to={`/movie/${movieId}`} className='rmdb-moviethumb-wrapper'>
+        <Link to={`/movie/${id}`} className='rmdb-moviethumb-wrapper'>
           <img className='rmdb-moviethumb-image' src={image} alt={title} />
           <p className='rmdb-moviethumb-title'>
             “{title}”{year ? `, ${year}` : ''}
@@ -35,11 +31,9 @@ const MovieThumb = ({
 };
 
 MovieThumb.propTypes = {
-  image: PropTypes.string,
-  title: PropTypes.string,
-  year: PropTypes.string,
+  movie: PropTypes.object,
+  imagePath: PropTypes.string,
   gender: PropTypes.number,
-  movieId: PropTypes.number,
   clickable: PropTypes.bool
 };
 

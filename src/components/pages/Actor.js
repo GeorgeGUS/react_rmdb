@@ -2,7 +2,7 @@ import React from 'react';
 import MetaTags from '../elements/MetaTags/MetaTags';
 import RMDBService from '../../services/RMDBService';
 
-import { getPosterUrl, getThumbUrl } from '../../config';
+import { getPosterUrl } from '../../config';
 import Page from '../elements/Page/Page';
 import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
@@ -36,16 +36,12 @@ const Actor = ({ response, loading }) => {
             .sort((a, b) => {
               return new Date(b.release_date) - new Date(a.release_date);
             })
-            .map(el => (
+            .map(movie => (
               <MovieThumb
-                key={el.id}
+                key={movie.id}
                 clickable
-                title={el.title}
-                year={el.release_date && el.release_date.slice(0, 4)}
-                image={getThumbUrl(el.poster_path)}
-                movieId={el.id}
+                movie={movie}
                 gender={response.gender}
-                character={el.character}
               />
             ))}
         </Grid>

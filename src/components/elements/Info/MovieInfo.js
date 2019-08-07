@@ -1,5 +1,5 @@
 import React from 'react';
-import { VIDEO_URL, getBackdropUrl, getPosterUrl } from '../../../config';
+import { VIDEO_URL, getBackdropUrl } from '../../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import Modal from '../Modal/Modal';
@@ -34,7 +34,7 @@ const MovieInfo = ({ movie }) => {
     <div className='rmdb-info' style={bgImage}>
       <div className='rmdb-info-content rmdb-container clearfix'>
         <div className='rmdb-info-thumb'>
-          <MovieThumb image={getPosterUrl(poster_path)} />
+          <MovieThumb imagePath={poster_path} />
         </div>
         <div className='rmdb-info-text'>
           <h1>{title}</h1>
