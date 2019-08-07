@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { VIDEO_URL, getBackdropUrl, getPosterUrl } from '../../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MovieThumb from '../MovieThumb/MovieThumb';
@@ -23,15 +23,13 @@ const MovieInfo = ({ movie }) => {
   const bgImage = {
     backgroundImage: `url(${getBackdropUrl(backdrop_path)})`
   };
-  const trailerId = videos.results.filter(({ type }) => type === 'Trailer')[0]
-    .key;
-  const trailerURL = `${VIDEO_URL}${trailerId}`;
+  const trailer =
+    videos.results.length > 0 &&
+    videos.results.filter(({ type }) => type === 'Trailer')[0];
+  const trailerURL = trailer ? `${VIDEO_URL}${trailer.key}` : null;
   const directors = credits.crew.filter(crew => crew.job === 'Director');
   const genresNames = genres.map(g => g.name).join(', ');
-  const [modalOpen, setModalOpen] = useState(false);
-  const changeModalOpen = bool => () => {
-    setModalOpen(bool);
-  };
+
   return (
     <div className='rmdb-info' style={bgImage}>
       <div className='rmdb-info-content rmdb-container clearfix'>
@@ -40,16 +38,18 @@ const MovieInfo = ({ movie }) => {
         </div>
         <div className='rmdb-info-text'>
           <h1>{title}</h1>
-          <LinkBtn onClick={changeModalOpen(true)}>
-            <FontAwesomeIcon icon='play' size='1x' /> Play trailer
-          </LinkBtn>
-          <Modal
-            title={'Play Trailer'}
-            show={modalOpen}
-            onClose={changeModalOpen(false)}
-          >
-            <Trailer trailerURL={modalOpen ? trailerURL : null} title={title} />
-          </Modal>
+          {trailerURL && (
+            <Modal
+              title={'Play Trailer'}
+              OpenBtn={({ openModal }) => (
+                <LinkBtn onClick={openModal}>
+                  <FontAwesomeIcon icon='play' size='1x' /> Play trailer
+                </LinkBtn>
+              )}
+            >
+              <Trailer trailerURL={trailerURL} title={title} />
+            </Modal>
+          )}
           <div className='rmdb-info-section'>
             <h2>Overview</h2>
             <p>{overview}</p>
