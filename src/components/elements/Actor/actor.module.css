@@ -1,45 +1,45 @@
-.rmdb-actor {
+.card {
   display: flex;
   color: #f3f3f3;
 }
 
-.rmdb-actor a {
+.link {
   text-decoration: none;
+  color: #c3c3c3;
+}
+
+.link:hover,
+.link:focus {
   color: #f3f3f3;
 }
 
-.rmdb-actor-image {
+.link:active {
+  color: #777777;
+}
+
+.image {
   flex-shrink: 0;
   width: 40%;
 }
 
-.rmdb-actor-image img {
+.image img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.rmdb-actor-info {
+.info {
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 
-.rmdb-actor-name {
+.name {
   font-size: 1.2rem;
-  color: #c3c3c3;
   text-transform: uppercase;
   margin: 0.5em 0;
 }
 
-a:hover .rmdb-actor-name {
-  color: #f3f3f3;
-}
-
-a:active .rmdb-actor-name {
-  color: #777777;
-}
-
-.rmdb-actor-character {
+.character {
   font-size: 1.1rem;
   margin: 0.5em 0;
 }
