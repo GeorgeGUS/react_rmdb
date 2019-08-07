@@ -6,7 +6,9 @@ import {
   faGenderless,
   faMars,
   faVenus,
-  faGlobe
+  faGlobe,
+  faPlay,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -25,5 +27,7 @@ library.add(
   faGenderless,
   faMars,
   faVenus,
-  faGlobe
+  faGlobe,
+  faPlay,
+  faTimes
 );

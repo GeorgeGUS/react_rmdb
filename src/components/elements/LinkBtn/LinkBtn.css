@@ -1,0 +1,17 @@
+.rmdb-link-btn {
+  height: 1em;
+  padding: 0;
+  color: #f3f3f3;
+  border: 0;
+  background-color: #0000;
+  cursor: pointer;
+}
+
+.rmdb-link-btn:hover,
+.rmdb-link-btn:focus {
+  opacity: 0.75;
+}
+
+.rmdb-link-btn:active {
+  opacity: 0.5;
+}

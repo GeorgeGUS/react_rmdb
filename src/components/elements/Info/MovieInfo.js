@@ -1,6 +1,11 @@
-import React from 'react';
-import { getBackdropUrl, getPosterUrl } from '../../../config';
+import React, { useState } from 'react';
+import { VIDEO_URL, getBackdropUrl, getPosterUrl } from '../../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MovieThumb from '../MovieThumb/MovieThumb';
+import Modal from '../Modal/Modal';
+import Trailer from '../Trailer/Trailer';
+import LinkBtn from '../LinkBtn/LinkBtn';
+
 import './Info.css';
 
 const MovieInfo = ({ movie }) => {
@@ -11,13 +16,21 @@ const MovieInfo = ({ movie }) => {
     genres,
     overview,
     vote_average,
-    credits
+    credits,
+    videos
   } = movie;
   const bgImage = {
     backgroundImage: `url(${getBackdropUrl(backdrop_path)})`
   };
+  const trailerId = videos.results.filter(({ type }) => type === 'Trailer')[0]
+    .key;
+  const trailerURL = `${VIDEO_URL}${trailerId}`;
   const directors = credits.crew.filter(crew => crew.job === 'Director');
   const genresNames = genres.map(g => g.name).join(', ');
+  const [modalOpen, setModalOpen] = useState(false);
+  const changeModalOpen = bool => () => {
+    setModalOpen(bool);
+  };
   return (
     <div className='rmdb-info' style={bgImage}>
       <div className='rmdb-info-content rmdb-container clearfix'>
@@ -26,7 +39,17 @@ const MovieInfo = ({ movie }) => {
         </div>
         <div className='rmdb-info-text'>
           <h1>{title}</h1>
-          <h2>Plot</h2>
+          <LinkBtn onClick={changeModalOpen(true)}>
+            <FontAwesomeIcon icon='play' size='1x' /> Play trailer
+          </LinkBtn>
+          <Modal
+            title={'Play Trailer'}
+            show={modalOpen}
+            onClose={changeModalOpen(false)}
+          >
+            <Trailer trailerURL={modalOpen ? trailerURL : null} title={title} />
+          </Modal>
+          <h2>Overview</h2>
           <p>{overview}</p>
           <div className='rmdb-info-sections'>
             <div className='rmdb-info-section'>
