@@ -5,6 +5,7 @@ import MovieThumb from '../MovieThumb/MovieThumb';
 import Modal from '../Modal/Modal';
 import Trailer from '../Trailer/Trailer';
 import LinkBtn from '../LinkBtn/LinkBtn';
+import Rating from '../Rating/Rating';
 
 import './Info.css';
 
@@ -49,30 +50,21 @@ const MovieInfo = ({ movie }) => {
           >
             <Trailer trailerURL={modalOpen ? trailerURL : null} title={title} />
           </Modal>
-          <h2>Overview</h2>
-          <p>{overview}</p>
-          <div className='rmdb-info-sections'>
+          <div className='rmdb-info-section'>
+            <h2>Overview</h2>
+            <p>{overview}</p>
+          </div>
+          <div className='rmdb-info-footer'>
             <div className='rmdb-info-section'>
               <h2>Genres</h2>
               <p>{genresNames}</p>
             </div>
             <div className='rmdb-info-section'>
               <h2>IMDB rating</h2>
-              <div className='rmdb-rating'>
-                <meter
-                  className='rmdb-rating-scale'
-                  min='0'
-                  max='100'
-                  optimum='100'
-                  low='40'
-                  high='70'
-                  value={vote_average * 10}
-                />
-                <p className='rmdb-rating-score'>{vote_average}</p>
-              </div>
+              <Rating value={vote_average} />
             </div>
             <div className='rmdb-info-section'>
-              {directors.length > 1 ? <h2>Directors</h2> : <h2>Director</h2>}
+              <h2>{directors.length > 1 ? 'Directors' : 'Director'}</h2>
               <p>{directors.map(({ name }) => name).join(', ')}</p>
             </div>
           </div>
