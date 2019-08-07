@@ -16,16 +16,6 @@
   background-image: linear-gradient(#0000 40%, #000a);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .rmdb-heroimage-content {
   position: relative;
   display: flex;

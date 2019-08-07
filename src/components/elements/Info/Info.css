@@ -6,18 +6,9 @@
   min-height: 600px;
   padding: 40px 0;
   box-sizing: border-box;
-  animation: animateMovieinfo 1s;
+  animation: fadeIn 1s;
 }
 
-@keyframes animateMovieinfo {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
 
 .rmdb-info-content {
   color: #f3f3f3;
