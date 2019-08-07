@@ -7,7 +7,7 @@ const API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/';
 const NO_IMAGE_URL = `${process.env.PUBLIC_URL}/images/no_image.jpg`;
 
-const VIDEO_URL = 'https://www.youtube.com/watch?v=';
+const VIDEO_URL = 'https://www.youtube.com/embed/';
 
 const getImageUrl = (imageSize, isBackdrop) => imagePath => {
   const noImageUrl = isBackdrop ? '' : NO_IMAGE_URL;
