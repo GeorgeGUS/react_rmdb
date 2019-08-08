@@ -35,4 +35,9 @@ const Search = ({
   );
 };
 
-export default RMDBService(Search, 'search', 'movie');
+const queryParams = {
+  type: 'search',
+  typeId: 'movie'
+};
+
+export default RMDBService(Search, queryParams);

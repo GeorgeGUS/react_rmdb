@@ -12,7 +12,8 @@ import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import Spinner from '../elements/Spinner/Spinner';
 
 const Actor = ({ response, loading }) => {
-  const movies = response && response.movie_credits.cast;
+  const movies =
+    response && response.movie_credits && response.movie_credits.cast;
   return (
     <Page>
       {response && (
@@ -52,8 +53,9 @@ const Actor = ({ response, loading }) => {
   );
 };
 
-export default RMDBService(Actor, 'person', null, [
-  'images',
-  'movie_credits',
-  'tv_credits'
-]);
+const queryParams = {
+  type: 'person',
+  options: ['images', 'movie_credits', 'tv_credits']
+};
+
+export default RMDBService(Actor, queryParams);

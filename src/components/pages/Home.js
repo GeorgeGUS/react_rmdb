@@ -41,4 +41,9 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
   );
 };
 
-export default RMDBService(Home, 'movie', 'popular');
+const queryParams = {
+  type: 'movie',
+  typeId: 'popular'
+};
+
+export default RMDBService(Home, queryParams);

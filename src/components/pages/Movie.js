@@ -12,7 +12,7 @@ import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import Spinner from '../elements/Spinner/Spinner';
 
 const Movie = ({ response, loading }) => {
-  const actors = response && response.credits.cast;
+  const actors = response && response.credits && response.credits.cast;
   return (
     <Page>
       {response && (
@@ -40,4 +40,9 @@ const Movie = ({ response, loading }) => {
   );
 };
 
-export default RMDBService(Movie, 'movie', null, ['credits', 'videos']);
+const queryParams = {
+  type: 'movie',
+  options: ['credits', 'videos']
+};
+
+export default RMDBService(Movie, queryParams);

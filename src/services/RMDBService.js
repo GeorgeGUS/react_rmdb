@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { API_URL, API_KEY, LANG } from '../config';
 
-const RMDBService = (Wrapped, ...queryProps) => {
+const RMDBService = (Wrapper, queryParams) => {
   return class extends Component {
     state = {
       movies: [],
@@ -12,14 +12,14 @@ const RMDBService = (Wrapped, ...queryProps) => {
       searchTerm: this.props.match.params.searchTerm || ''
     };
 
-    createEndpoint = (type, typeId, options) => () => {
+    createEndpoint = ({ type, typeId, options }) => () => {
       const { id } = this.props.match.params;
       const { currentPage, searchTerm } = this.state;
       return `${API_URL}${type}/${typeId ||
         id}?api_key=${API_KEY}&language=${LANG}&append_to_response=${options}&query=${searchTerm}&page=${currentPage}`;
     };
 
-    _endpoint = this.createEndpoint(...queryProps);
+    _endpoint = this.createEndpoint(queryParams);
 
     componentDidMount() {
       this.fetchItems();
@@ -66,7 +66,7 @@ const RMDBService = (Wrapped, ...queryProps) => {
 
     render() {
       return (
-        <Wrapped
+        <Wrapper
           {...this.state}
           {...this.props}
           updateItems={this.updateItems}
