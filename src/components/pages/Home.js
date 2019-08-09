@@ -7,7 +7,7 @@ import Page from '../elements/Page/Page';
 import Grid from '../elements/Grid/Grid';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
-import MovieThumb from '../elements/MovieThumb/MovieThumb';
+import { MovieThumb } from '../elements/Thumbs';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
@@ -30,7 +30,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
       <SearchBar />
       <Grid title={'Popular Movies'}>
         {movies.map(movie => (
-          <MovieThumb key={movie.id} clickable movie={movie} />
+          <MovieThumb key={movie.id} movie={movie} />
         ))}
       </Grid>
       {loading && <Spinner />}

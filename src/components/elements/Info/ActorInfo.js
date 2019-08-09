@@ -1,12 +1,12 @@
 import React from 'react';
-import MovieThumb from '../MovieThumb/MovieThumb';
+import { InfoThumb } from '../Thumbs';
 import './Info.css';
 
 const ActorInfo = ({ actor: { profile_path, name, biography } }) => (
   <div className='rmdb-info'>
     <div className='rmdb-info-content rmdb-container clearfix'>
       <div className='rmdb-info-thumb'>
-        <MovieThumb imagePath={profile_path} />
+        <InfoThumb imagePath={profile_path} alt={name} />
       </div>
       <div className='rmdb-info-text'>
         <h1>{name}</h1>

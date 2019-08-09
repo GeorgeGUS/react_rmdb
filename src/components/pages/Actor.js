@@ -8,7 +8,7 @@ import Breadcrumbs from '../elements/Breadcrumbs/Breadcrumbs';
 import ActorInfo from '../elements/Info/ActorInfo';
 import ActorInfoBar from '../elements/InfoBar/ActorInfoBar';
 import Grid from '../elements/Grid/Grid';
-import MovieThumb from '../elements/MovieThumb/MovieThumb';
+import { MovieThumb } from '../elements/Thumbs';
 import Spinner from '../elements/Spinner/Spinner';
 
 const Actor = ({ response, loading }) => {
@@ -35,12 +35,7 @@ const Actor = ({ response, loading }) => {
               return new Date(b.release_date) - new Date(a.release_date);
             })
             .map(movie => (
-              <MovieThumb
-                key={movie.id}
-                clickable
-                movie={movie}
-                gender={response.gender}
-              />
+              <MovieThumb key={movie.id} movie={movie} />
             ))}
         </Grid>
       )}

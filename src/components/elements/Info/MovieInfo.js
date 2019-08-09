@@ -1,7 +1,7 @@
 import React from 'react';
 import { VIDEO_URL, getBackdropUrl } from '../../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MovieThumb from '../MovieThumb/MovieThumb';
+import { InfoThumb } from '../Thumbs';
 import Modal from '../Modal/Modal';
 import Trailer from '../Trailer/Trailer';
 import LinkBtn from '../LinkBtn/LinkBtn';
@@ -34,7 +34,7 @@ const MovieInfo = ({ movie }) => {
     <div className='rmdb-info' style={bgImage}>
       <div className='rmdb-info-content rmdb-container clearfix'>
         <div className='rmdb-info-thumb'>
-          <MovieThumb imagePath={poster_path} />
+          <InfoThumb imagePath={poster_path} alt={title} />
         </div>
         <div className='rmdb-info-text'>
           <h1>{title}</h1>

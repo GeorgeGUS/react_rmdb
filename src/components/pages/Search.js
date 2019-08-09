@@ -5,7 +5,7 @@ import RMDBService from '../../services/RMDBService';
 import Page from '../elements/Page/Page';
 import Grid from '../elements/Grid/Grid';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
-import MovieThumb from '../elements/MovieThumb/MovieThumb';
+import { MovieThumb } from '../elements/Thumbs';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
@@ -24,7 +24,7 @@ const Search = ({
       <SearchBar />
       <Grid title={title}>
         {movies.map(movie => (
-          <MovieThumb key={movie.id} clickable movie={movie} />
+          <MovieThumb key={movie.id} movie={movie} />
         ))}
       </Grid>
       {loading && <Spinner />}

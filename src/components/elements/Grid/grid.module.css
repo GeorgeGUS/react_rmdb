@@ -5,6 +5,7 @@
 }
 
 .element {
+  color: #f3f3f3;
   background-color: #1c1c1c;
   box-shadow: 0 3px 6px -3px #333;
 }
