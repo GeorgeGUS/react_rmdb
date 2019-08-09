@@ -29,10 +29,7 @@ const Actor = ({ response, loading }) => {
         </>
       )}
       {movies && (
-        <Grid
-          header={`${movies.length} Movies with ${response.name}`}
-          loading={loading}
-        >
+        <Grid title={`${movies.length} Movies with ${response.name}`}>
           {movies
             .sort((a, b) => {
               return new Date(b.release_date) - new Date(a.release_date);

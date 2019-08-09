@@ -28,7 +28,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
         text={heroImage.overview}
       />
       <SearchBar />
-      <Grid header={'Popular Movies'} loading={loading}>
+      <Grid title={'Popular Movies'}>
         {movies.map(movie => (
           <MovieThumb key={movie.id} clickable movie={movie} />
         ))}

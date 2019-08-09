@@ -28,7 +28,7 @@ const Movie = ({ response, loading }) => {
         </>
       )}
       {actors && (
-        <Grid header={'Actors'} loading={loading} isActors>
+        <Grid title={'Actors'}>
           {actors.map(actor => (
             <Actor key={actor.name} actor={actor} />
           ))}

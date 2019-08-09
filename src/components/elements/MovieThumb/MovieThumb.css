@@ -7,6 +7,7 @@
   position: relative;
   padding-bottom: 150%;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .rmdb-moviethumb-title {

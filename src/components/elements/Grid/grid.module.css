@@ -1,0 +1,16 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 30px;
+}
+
+.element {
+  background-color: #1c1c1c;
+  box-shadow: 0 3px 6px -3px #333;
+}
+
+@media screen and (max-width: 1000px) {
+  .content {
+    grid-gap: 20px;
+  }
+}

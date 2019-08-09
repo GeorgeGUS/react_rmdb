@@ -1,38 +1,22 @@
 import React from 'react';
-import cn from 'classnames';
-import PropTypes from 'prop-types';
 import ErrorBoundary from '../../ErrorBoundary';
-import './Grid.css';
+import styles from './grid.module.css';
 
-const Grid = ({ children, header, loading, isActors }) => {
-  const renderElements = () =>
-    children &&
-    children.map((el, i) => (
-      <div key={i} className='rmdb-grid-element'>
-        {el}
-      </div>
-    ));
-  const contentClasses = cn({
-    'rmdb-grid-content': true,
-    'rmdb-grid-content-actor': isActors
-  });
-
-  return (
-    <ErrorBoundary>
-      <div className='rmdb-grid'>
-        <div className='rmdb-container'>
-          {header && !loading && <h2>{header}</h2>}
-          <div className={contentClasses}>{renderElements()}</div>
+const Grid = ({ children, title }) => (
+  <ErrorBoundary>
+    <section className='rmdb-grid'>
+      <div className='rmdb-container'>
+        <h2>{title}</h2>
+        <div className={styles.content}>
+          {children.map((el, i) => (
+            <div key={i} className={styles.element}>
+              {el}
+            </div>
+          ))}
         </div>
       </div>
-    </ErrorBoundary>
-  );
-};
-
-Grid.propTypes = {
-  header: PropTypes.string,
-  loading: PropTypes.bool,
-  isActors: PropTypes.bool
-};
+    </section>
+  </ErrorBoundary>
+);
 
 export default Grid;

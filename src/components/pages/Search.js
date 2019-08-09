@@ -22,7 +22,7 @@ const Search = ({
     <Page>
       <MetaTags title={`RMDB - Search: ${searchTerm}`} desc={title} />
       <SearchBar />
-      <Grid header={title} loading={loading}>
+      <Grid title={title}>
         {movies.map(movie => (
           <MovieThumb key={movie.id} clickable movie={movie} />
         ))}
