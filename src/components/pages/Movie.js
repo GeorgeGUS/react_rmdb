@@ -28,7 +28,7 @@ const Movie = ({ response, loading }) => {
         </>
       )}
       {actors && (
-        <Grid title={'Actors'}>
+        <Grid title='Actors'>
           {actors.map(actor => (
             <Actor key={actor.name} actor={actor} />
           ))}

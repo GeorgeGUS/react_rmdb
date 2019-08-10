@@ -16,10 +16,8 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
   return (
     <Page>
       <MetaTags
-        title={'RMDB - Popular Movies'}
-        desc={
-          'React Movie (or RMDB) is a database for searching information about movies and actors'
-        }
+        title='RMDB - Popular Movies'
+        desc='React Movie (or RMDB) is a database for searching information about movies and actors'
         image={getBackdropUrl(heroImage.backdrop_path)}
       />
       <HeroImage
@@ -28,7 +26,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
         text={heroImage.overview}
       />
       <SearchBar />
-      <Grid title={'Popular Movies'}>
+      <Grid title='Popular Movies'>
         {movies.map(movie => (
           <MovieThumb key={movie.id} movie={movie} />
         ))}

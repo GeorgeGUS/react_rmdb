@@ -36,7 +36,7 @@ const MovieInfo = ({
   return (
     <Info title={title} thumb={poster_path} style={bgImage}>
       {trailerURL && (
-        <Modal title={'Play Trailer'} OpenBtn={ModalOpenBtn}>
+        <Modal title='Play Trailer' OpenBtn={ModalOpenBtn}>
           <Trailer trailerURL={trailerURL} title={title} />
         </Modal>
       )}
