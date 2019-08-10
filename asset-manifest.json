@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react_rmdb/static/css/main.c2b194f5.chunk.css",
-    "main.js": "/react_rmdb/static/js/main.3fdf4f34.chunk.js",
-    "main.js.map": "/react_rmdb/static/js/main.3fdf4f34.chunk.js.map",
+    "main.css": "/react_rmdb/static/css/main.361a7d64.chunk.css",
+    "main.js": "/react_rmdb/static/js/main.a8569c5b.chunk.js",
+    "main.js.map": "/react_rmdb/static/js/main.a8569c5b.chunk.js.map",
     "runtime~main.js": "/react_rmdb/static/js/runtime~main.f8e83255.js",
     "runtime~main.js.map": "/react_rmdb/static/js/runtime~main.f8e83255.js.map",
     "static/css/2.764ccc25.chunk.css": "/react_rmdb/static/css/2.764ccc25.chunk.css",
-    "static/js/2.498b904c.chunk.js": "/react_rmdb/static/js/2.498b904c.chunk.js",
-    "static/js/2.498b904c.chunk.js.map": "/react_rmdb/static/js/2.498b904c.chunk.js.map",
+    "static/js/2.8d1ca95f.chunk.js": "/react_rmdb/static/js/2.8d1ca95f.chunk.js",
+    "static/js/2.8d1ca95f.chunk.js.map": "/react_rmdb/static/js/2.8d1ca95f.chunk.js.map",
     "index.html": "/react_rmdb/index.html",
-    "precache-manifest.f8a63d87789189b240cb7e6c029f6262.js": "/react_rmdb/precache-manifest.f8a63d87789189b240cb7e6c029f6262.js",
+    "precache-manifest.2883fdc6c5cb3b7da71f17b4dce7d0cc.js": "/react_rmdb/precache-manifest.2883fdc6c5cb3b7da71f17b4dce7d0cc.js",
     "service-worker.js": "/react_rmdb/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/react_rmdb/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.c2b194f5.chunk.css.map": "/react_rmdb/static/css/main.c2b194f5.chunk.css.map"
+    "static/css/main.361a7d64.chunk.css.map": "/react_rmdb/static/css/main.361a7d64.chunk.css.map"
   }
 }
