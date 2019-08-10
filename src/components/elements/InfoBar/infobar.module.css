@@ -1,11 +1,11 @@
-.rmdb-infobar {
+.wrapper {
   background-color: #1c1c1c;
   position: relative;
   padding: 20px 0;
   box-sizing: border-box;
 }
 
-.rmdb-infobar-list {
+.list {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -14,7 +14,7 @@
   color: #f3f3f3;
 }
 
-.rmdb-infobar-item {
+.item {
   display: flex;
   align-items: center;
   margin-right: 1.5em;
@@ -22,16 +22,16 @@
   font-size: 1.25rem;
 }
 
-.rmdb-infobar-info {
+.text {
   margin-left: 0.5em;
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-infobar {
+  .wrapper {
     padding: 10px 0;
   }
 
-  .rmdb-infobar-item {
+  .item {
     font-size: 1.1rem;
     margin-right: 1em;
     padding: 0.25em 0;

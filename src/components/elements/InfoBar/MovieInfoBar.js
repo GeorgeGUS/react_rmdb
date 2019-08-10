@@ -1,37 +1,16 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Infobar, { Item } from './InfoBar';
 import { calcTime, convertMoney } from '../../../helpers';
-import './InfoBar.css';
 
 const MovieInfoBar = ({
   movie: { runtime, budget, revenue, release_date }
 }) => (
-  <div className='rmdb-infobar'>
-    <ul className='rmdb-infobar-list rmdb-container'>
-      <li className='rmdb-infobar-item'>
-        <FontAwesomeIcon icon={['far', 'calendar-alt']} size='2x' />
-        <span className='rmdb-infobar-info'>Release date: {release_date}</span>
-      </li>
-      <li className='rmdb-infobar-item'>
-        <FontAwesomeIcon icon={['far', 'clock']} size='2x' />
-        <span className='rmdb-infobar-info'>
-          Running time: {calcTime(runtime)}
-        </span>
-      </li>
-      <li className='rmdb-infobar-item'>
-        <FontAwesomeIcon icon={['far', 'money-bill-alt']} size='2x' />
-        <span className='rmdb-infobar-info'>
-          Budget: {convertMoney(budget)}
-        </span>
-      </li>
-      <li className='rmdb-infobar-item'>
-        <FontAwesomeIcon icon='ticket-alt' size='2x' />
-        <span className='rmdb-infobar-info'>
-          Revenue: {convertMoney(revenue)}
-        </span>
-      </li>
-    </ul>
-  </div>
+  <Infobar>
+    <Item icon={['far', 'calendar-alt']}>Release date: {release_date}</Item>
+    <Item icon={['far', 'clock']}>Running time: {calcTime(runtime)}</Item>
+    <Item icon={['far', 'money-bill-alt']}>Budget: {convertMoney(budget)}</Item>
+    <Item icon='ticket-alt'>Revenue: {convertMoney(revenue)}</Item>
+  </Infobar>
 );
 
 export default MovieInfoBar;
