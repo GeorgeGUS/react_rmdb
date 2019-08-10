@@ -24,8 +24,8 @@ const Actor = ({ response, loading }) => {
             image={getPosterUrl(response.profile_path)}
           />
           <Breadcrumbs title={response.name} />
-          <ActorInfo actor={response} />
-          <ActorInfoBar actor={response} />
+          <ActorInfo {...response} />
+          <ActorInfoBar {...response} />
         </>
       )}
       {movies && (

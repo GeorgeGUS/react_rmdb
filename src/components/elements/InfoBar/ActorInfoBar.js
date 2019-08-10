@@ -8,9 +8,7 @@ const genders = [
   { gen: 'Male', icon: 'mars' }
 ];
 
-const ActorInfoBar = ({
-  actor: { gender, birthday, deathday, place_of_birth }
-}) => {
+const ActorInfoBar = ({ gender, birthday, deathday, place_of_birth }) => {
   const age = getAge(birthday, deathday);
   const life = birthday
     ? `${birthday} – ${deathday || 'now'} (age ${age})`

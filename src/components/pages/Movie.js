@@ -23,8 +23,8 @@ const Movie = ({ response, loading }) => {
             image={getPosterUrl(response.poster_path)}
           />
           <Breadcrumbs title={response.title} />
-          <MovieInfo movie={response} />
-          <MovieInfoBar movie={response} />
+          <MovieInfo {...response} />
+          <MovieInfoBar {...response} />
         </>
       )}
       {actors && (

@@ -2,9 +2,7 @@ import React from 'react';
 import Infobar, { Item } from './InfoBar';
 import { calcTime, convertMoney } from '../../../helpers';
 
-const MovieInfoBar = ({
-  movie: { runtime, budget, revenue, release_date }
-}) => (
+const MovieInfoBar = ({ runtime, budget, revenue, release_date }) => (
   <Infobar>
     <Item icon={['far', 'calendar-alt']}>Release date: {release_date}</Item>
     <Item icon={['far', 'clock']}>Running time: {calcTime(runtime)}</Item>

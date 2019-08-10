@@ -13,17 +13,16 @@ const ModalOpenBtn = ({ openModal }) => (
   </LinkBtn>
 );
 
-const MovieInfo = ({ movie }) => {
-  const {
-    backdrop_path,
-    poster_path,
-    title,
-    genres,
-    overview,
-    vote_average,
-    credits,
-    videos
-  } = movie;
+const MovieInfo = ({
+  backdrop_path,
+  poster_path,
+  title,
+  genres,
+  overview,
+  vote_average,
+  credits,
+  videos
+}) => {
   const bgImage = {
     backgroundImage: `url(${getBackdropUrl(backdrop_path)})`
   };
