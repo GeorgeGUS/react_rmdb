@@ -1,13 +1,17 @@
 import React from 'react';
 import { VIDEO_URL, getBackdropUrl } from '../../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { InfoThumb } from '../Thumbs';
+import Info, { Section, Footer } from './Info';
 import Modal from '../Modal/Modal';
 import Trailer from '../Trailer/Trailer';
 import LinkBtn from '../LinkBtn/LinkBtn';
 import Rating from '../Rating/Rating';
 
-import './Info.css';
+const ModalOpenBtn = ({ openModal }) => (
+  <LinkBtn onClick={openModal}>
+    <FontAwesomeIcon icon='play' size='1x' /> Play trailer
+  </LinkBtn>
+);
 
 const MovieInfo = ({ movie }) => {
   const {
@@ -31,46 +35,23 @@ const MovieInfo = ({ movie }) => {
   const genresNames = genres.map(g => g.name).join(', ');
 
   return (
-    <div className='rmdb-info' style={bgImage}>
-      <div className='rmdb-info-content rmdb-container clearfix'>
-        <div className='rmdb-info-thumb'>
-          <InfoThumb imagePath={poster_path} alt={title} />
-        </div>
-        <div className='rmdb-info-text'>
-          <h1>{title}</h1>
-          {trailerURL && (
-            <Modal
-              title={'Play Trailer'}
-              OpenBtn={({ openModal }) => (
-                <LinkBtn onClick={openModal}>
-                  <FontAwesomeIcon icon='play' size='1x' /> Play trailer
-                </LinkBtn>
-              )}
-            >
-              <Trailer trailerURL={trailerURL} title={title} />
-            </Modal>
-          )}
-          <div className='rmdb-info-section'>
-            <h2>Overview</h2>
-            <p>{overview}</p>
-          </div>
-          <div className='rmdb-info-footer'>
-            <div className='rmdb-info-section'>
-              <h2>Genres</h2>
-              <p>{genresNames}</p>
-            </div>
-            <div className='rmdb-info-section'>
-              <h2>IMDB rating</h2>
-              <Rating value={vote_average} />
-            </div>
-            <div className='rmdb-info-section'>
-              <h2>{directors.length > 1 ? 'Directors' : 'Director'}</h2>
-              <p>{directors.map(({ name }) => name).join(', ')}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Info title={title} thumb={poster_path} style={bgImage}>
+      {trailerURL && (
+        <Modal title={'Play Trailer'} OpenBtn={ModalOpenBtn}>
+          <Trailer trailerURL={trailerURL} title={title} />
+        </Modal>
+      )}
+      <Section title='Overview'>{overview}</Section>
+      <Footer>
+        <Section title='Genres'>{genresNames}</Section>
+        <Section title='IMDB rating'>
+          <Rating value={vote_average} />
+        </Section>
+        <Section title={directors.length > 1 ? 'Directors' : 'Director'}>
+          {directors.map(({ name }) => name).join(', ')}
+        </Section>
+      </Footer>
+    </Info>
   );
 };
 
