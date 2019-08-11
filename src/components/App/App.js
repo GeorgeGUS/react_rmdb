@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import ErrorBoundary from '../ErrorBoundary';
+import ErrorBoundary from '../elements/ErrorBoundary/ErrorBoundary';
 import Header from '../elements/Header/Header';
 import NotFound from '../elements/NotFound/NotFound';
 import Home from '../pages/Home';

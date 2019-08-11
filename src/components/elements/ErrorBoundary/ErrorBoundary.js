@@ -21,7 +21,7 @@ class ErrorBoundary extends Component {
       return (
         <div>
           <h3>Stranger things happen here...</h3>
-          <p>Keep calm, we called El to fix it.</p>
+          <p>Keep calm, we called Eleven to fix it.</p>
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {error && error.toString()}
             {errorInfo && errorInfo.componentStack}
