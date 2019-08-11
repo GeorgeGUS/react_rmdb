@@ -1,5 +1,6 @@
 .block {
-  background-color: #1c1c1c;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 .content {

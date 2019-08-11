@@ -1,5 +1,19 @@
+:root {
+  --theme-light: #f3f3f3;
+  --theme-dark: #1c1c1c;
+  --theme-green: #16d47b;
+  --theme-yellow: #fbb450;
+  --theme-red: #ee5f5b;
+  --text-color: var(--theme-light);
+  --text-color-darker: #c3c3c3;
+  --bg-color: var(--theme-dark);
+  --shadow-color: #333333;
+  --overlay-color: rgba(0, 0, 0, 0.7);
+}
+
 body {
   font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+  color: var(--theme-dark);
   margin: 0;
 }
 

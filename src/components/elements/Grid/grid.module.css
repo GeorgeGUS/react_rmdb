@@ -9,9 +9,9 @@
 }
 
 .element {
-  color: #f3f3f3;
-  background-color: #1c1c1c;
-  box-shadow: 0 3px 6px -3px #333;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  box-shadow: 0 3px 6px -3px var(--shadow-color);
 }
 
 @media screen and (max-width: 1000px) {

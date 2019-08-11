@@ -15,19 +15,19 @@
 .scale::-webkit-meter-bar {
   width: 230px;
   height: 1.5em;
-  background-color: #f3f3f3;
+  background-color: var(--theme-light);
 }
 
 .scale::-webkit-meter-optimum-value {
-  background-color: #16d47b;
+  background-color: var(--theme-green);
 }
 
 .scale::-webkit-meter-suboptimum-value {
-  background-color: #fbb450;
+  background-color: var(--theme-yellow);
 }
 
 .scale::-webkit-meter-even-less-good-value {
-  background-color: #ee5f5b;
+  background-color: var(--theme-red);
 }
 
 @media screen and (max-width: 720px) {

@@ -2,12 +2,15 @@
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 2.5rem;
-  color: #f3f3f3;
-  background: #1c1c1c;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 .form {
   position: relative;
+  --form-bg-color: #353535;
+  --form-gray-color: #666666;
+  --form-dark-color: #222222;
 }
 
 .label {
@@ -26,19 +29,27 @@
   padding: 0 3.5em 0 2em;
   margin-left: -2em;
   border: 0;
-  color: #f3f3f3;
   border-radius: 1em;
-  background-color: #353535;
+  color: var(--text-color);
+  background-color: var(--form-bg-color);
   transition: box-shadow 0.1s ease-out;
 }
 
 .input:hover {
-  box-shadow: 0 0 0 1px #666666;
+  box-shadow: 0 0 0 1px var(--form-gray-color);
 }
 
 .input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px #c3c3c3;
+  box-shadow: 0 0 0 3px var(--text-color-darker);
+
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-color);
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .submitBtn {
@@ -50,20 +61,20 @@
   font-size: 0.75em;
   border-radius: 2.5rem;
   color: inherit;
-  background-color: #fff2;
+  background-color: var(--form-gray-color);
   border: 0;
 }
 
 .submitBtn:hover,
 .submitBtn:focus {
   outline: none;
-  color: #353535;
-  background-color: #c3c3c3;
+  color: var(--form-bg-color);
+  background-color: var(--text-color-darker);
 }
 
 .submitBtn:active {
-  color: #222222;
-  background-color: #666666;
+  color: var(--form-dark-color);
+  background-color: var(--form-gray-color);
 }
 
 @media screen and (max-width: 720px) {
@@ -87,6 +98,6 @@
   }
 
   .input:focus {
-    box-shadow: 0 0 0 2px #c3c3c3;
+    box-shadow: 0 0 0 2px var(--text-color-darker);
   }
 }

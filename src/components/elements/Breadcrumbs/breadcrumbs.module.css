@@ -23,7 +23,7 @@
 
 .item,
 .item a {
-  color: #f3f3f3;
+  color: var(--text-color);
   padding-right: 0.5em;
   text-decoration: none;
 }

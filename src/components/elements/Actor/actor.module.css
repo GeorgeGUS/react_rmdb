@@ -1,16 +1,15 @@
 .card {
   display: flex;
-  color: #f3f3f3;
 }
 
 .link {
   text-decoration: none;
-  color: #c3c3c3;
+  color: var(--text-color-darker);
 }
 
 .link:hover,
 .link:focus {
-  color: #f3f3f3;
+  color: var(--text-color);
 }
 
 .link:active {

@@ -1,6 +1,6 @@
 .block {
   composes: fadeIn from global;
-  background-color: #000;
+  background-color: black;
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -12,8 +12,8 @@
 .content {
   composes: container clearfix from global;
   font-size: 1.2rem;
-  color: #f3f3f3;
-  background-color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color);
+  background-color: var(--overlay-color);
 }
 
 .thumb {
@@ -37,7 +37,7 @@
 
 .subtitle {
   font-size: 1.5rem;
-  color: #b3b3b3;
+  color: var(--text-color-darker);
   font-weight: normal;
   text-transform: uppercase;
 }

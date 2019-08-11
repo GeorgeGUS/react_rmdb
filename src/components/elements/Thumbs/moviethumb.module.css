@@ -30,8 +30,8 @@
   margin: 0;
   padding: 5px 10px;
   font-size: 1.2rem;
-  color: #fff;
-  background-color: #000d;
+  color: var(--text-color);
+  background-color: var(--overlay-color);
   box-sizing: border-box;
 }
 
