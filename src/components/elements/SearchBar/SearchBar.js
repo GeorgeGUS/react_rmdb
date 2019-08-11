@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './SearchBar.css';
+import styles from './searchbar.module.css';
 
 class SearchBar extends Component {
   state = {
@@ -39,23 +39,23 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className='rmdb-searchbar'>
-        <div className='rmdb-container'>
-          <form className='rmdb-searchbar-form' onSubmit={this.handleSubmit}>
-            <label className='rmdb-searchbar-label'>
-              <FontAwesomeIcon className='rmdb-searchbar-icon' icon='search' />
+      <div className={styles.wrapper}>
+        <div className='container'>
+          <form className={styles.form} onSubmit={this.handleSubmit}>
+            <label className={styles.label}>
+              <FontAwesomeIcon className={styles.icon} icon='search' />
               <span className='visually-hidden'>Search</span>
               <input
                 type='text'
                 name='search'
-                className='rmdb-searchbar-input'
+                className={styles.input}
                 placeholder='Search'
                 onFocus={this.selectText}
                 onChange={this.handleInput}
                 value={this.state.value}
               />
             </label>
-            <button className='rmdb-searchbar-submit'>Search</button>
+            <button className={styles.submitBtn}>Search</button>
           </form>
         </div>
       </div>

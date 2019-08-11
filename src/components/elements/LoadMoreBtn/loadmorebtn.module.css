@@ -1,4 +1,8 @@
-.rmdb-loadmorebtn {
+.wrapper {
+  composes: container from global;
+}
+
+.btn {
   padding: 0.5em;
   margin-top: 1em;
   width: 100%;
@@ -12,19 +16,19 @@
 }
 
 @media screen and (max-width: 500px) {
-  .rmdb-loadmorebtn {
+  .btn {
     font-size: 1.75rem;
   }
 }
 
-.rmdb-loadmorebtn:hover {
+.btn:hover {
   background-color: hsl(155, 75%, 40%);
 }
 
-.rmdb-loadmorebtn:active {
+.btn:active {
   background-color: hsl(155, 75%, 30%);
 }
 
-.rmdb-loadmorebtn:focus:active {
+.btn:focus:active {
   outline: none;
 }

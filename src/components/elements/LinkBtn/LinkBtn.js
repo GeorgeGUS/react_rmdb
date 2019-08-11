@@ -1,9 +1,9 @@
 import React from 'react';
-import './LinkBtn.css';
+import styles from './linkbtn.module.css';
 
 const LinkBtn = ({ children, onClick }) => {
   return (
-    <button type='button' className='rmdb-link-btn' onClick={onClick}>
+    <button type='button' className={styles.btn} onClick={onClick}>
       {children}
     </button>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import './Page.css';
+import styles from './page.module.css';
 
 const Page = ({ children }) => {
-  return <main className='rmdb-page'>{children}</main>;
+  return <main className={styles.wrapper}>{children}</main>;
 };
 
 export default Page;

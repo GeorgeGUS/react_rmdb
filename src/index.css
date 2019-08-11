@@ -33,7 +33,7 @@ img {
   overflow: hidden;
 }
 
-.rmdb-container {
+.container {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
@@ -54,7 +54,7 @@ img {
     font-size: 1.25rem;
   }
 
-  .rmdb-container {
+  .container {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -66,6 +66,10 @@ img {
   clear: both;
 }
 
+.fadeIn {
+  animation: fadeIn 1s;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -73,15 +77,5 @@ img {
 
   to {
     opacity: 1;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }

@@ -1,17 +1,17 @@
-.rmdb-link-btn {
+.btn {
   height: 1em;
   padding: 0;
   color: #f3f3f3;
   border: 0;
-  background-color: #0000;
+  background-color: transparent;
   cursor: pointer;
 }
 
-.rmdb-link-btn:hover,
-.rmdb-link-btn:focus {
+.btn:hover,
+.btn:focus {
   opacity: 0.75;
 }
 
-.rmdb-link-btn:active {
+.btn:active {
   opacity: 0.5;
 }

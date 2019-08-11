@@ -1,14 +1,14 @@
 import React from 'react';
-import './HeroImage.css';
+import styles from './heroimage.module.css';
 
 const HeroImage = ({ image, title, text }) => {
   const bgImage = {
     backgroundImage: `url('${image}')`
   };
   return (
-    <div className='rmdb-heroimage' style={bgImage}>
-      <div className='rmdb-heroimage-content rmdb-container'>
-        <div className='rmdb-heroimage-text'>
+    <div className={styles.wrapper} style={bgImage}>
+      <div className={styles.container}>
+        <div className={styles.content}>
           <h1>{title}</h1>
           <p>{text}</p>
         </div>

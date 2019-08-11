@@ -1,4 +1,5 @@
 .wrapper {
+  composes: fadeIn from global;
   background-color: #000;
   background-size: cover;
   background-position: center;
@@ -6,10 +7,10 @@
   min-height: 600px;
   padding: 40px 0;
   box-sizing: border-box;
-  animation: fadeIn 1s;
 }
 
 .content {
+  composes: container clearfix from global;
   font-size: 1.2rem;
   color: #f3f3f3;
   background-color: rgb(0, 0, 0, 0.7);
@@ -58,7 +59,7 @@
 }
 
 @media screen and (max-width: 870px) {
-  .rmdb-info {
+  .wrapper {
     min-height: 450px;
   }
 
@@ -69,7 +70,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-info {
+  .wrapper {
     min-height: 250px;
     padding: 20px 0;
   }
@@ -102,7 +103,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .rmdb-info {
+  .wrapper {
     min-height: 340px;
   }
 

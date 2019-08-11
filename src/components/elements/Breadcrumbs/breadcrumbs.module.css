@@ -1,4 +1,4 @@
-.rmdb-breadcrumbs {
+.wrapper {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   font-size: 1.5rem;
@@ -7,12 +7,13 @@
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-breadcrumbs {
+  .wrapper {
     font-size: 1.25rem;
   }
 }
 
-.rmdb-breadcrumbs-list {
+.list {
+  composes: container from global;
   display: flex;
   flex-wrap: wrap;
   margin: 0;
@@ -20,13 +21,13 @@
   list-style: none;
 }
 
-.rmdb-breadcrumbs-item,
-.rmdb-breadcrumbs-item a {
+.item,
+.item a {
   color: #f3f3f3;
   padding-right: 0.5em;
   text-decoration: none;
 }
 
-.rmdb-breadcrumbs-item:not(:last-child)::after {
+.item:not(:last-child)::after {
   content: '/';
 }

@@ -4,8 +4,8 @@ import styles from './grid.module.css';
 
 const Grid = ({ children, title }) => (
   <ErrorBoundary>
-    <section className='rmdb-grid'>
-      <div className='rmdb-container'>
+    <div className={styles.wrapper}>
+      <div className='container'>
         <h2>{title}</h2>
         <div className={styles.content}>
           {children.map((el, i) => (
@@ -15,7 +15,7 @@ const Grid = ({ children, title }) => (
           ))}
         </div>
       </div>
-    </section>
+    </div>
   </ErrorBoundary>
 );
 

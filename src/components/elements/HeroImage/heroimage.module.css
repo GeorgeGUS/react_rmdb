@@ -1,12 +1,12 @@
-.rmdb-heroimage {
+.wrapper {
+  composes: fadeIn from global;
   position: relative;
   background-color: #1c1c1c;
   background-size: cover;
   background-position: center;
-  animation: fadeIn 1s;
 }
 
-.rmdb-heroimage::before {
+.wrapper::before {
   content: '';
   position: absolute;
   top: 0;
@@ -16,7 +16,9 @@
   background-image: linear-gradient(#0000 40%, #000a);
 }
 
-.rmdb-heroimage-content {
+.container {
+  composes: container from global;
+  /* position needs to put over gradient */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,20 +26,20 @@
   min-height: 600px;
 }
 
-.rmdb-heroimage-text {
+.content {
   max-width: 700px;
   margin: 40px 0;
   color: #fff;
   text-shadow: 0 1px 2px #1c1c1c;
 }
 
-.rmdb-heroimage-text p {
+.content p {
   font-size: 1.4rem;
   line-height: 1.25;
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-heroimage-text p {
+  .content p {
     font-size: 1.2rem;
   }
 }

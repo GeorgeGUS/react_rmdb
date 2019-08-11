@@ -11,7 +11,7 @@ export const Item = ({ icon, children }) => (
 
 const InfoBar = ({ children }) => (
   <div className={styles.wrapper}>
-    <ul className={`${styles.list} rmdb-container`}>{children}</ul>
+    <ul className={styles.list}>{children}</ul>
   </div>
 );
 

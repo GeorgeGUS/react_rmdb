@@ -1,4 +1,4 @@
-.rmdb-searchbar {
+.wrapper {
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 2.5rem;
@@ -6,21 +6,21 @@
   background: #1c1c1c;
 }
 
-.rmdb-searchbar-form {
+.form {
   position: relative;
 }
 
-.rmdb-searchbar-label {
+.label {
   display: flex;
   align-items: center;
 }
 
-.rmdb-searchbar-icon {
+.icon {
   padding: 0.25em 0.5em;
   z-index: 1;
 }
 
-.rmdb-searchbar-input {
+.input {
   width: 100%;
   height: 1.5em;
   padding: 0 3.5em 0 2em;
@@ -32,16 +32,16 @@
   transition: box-shadow 0.1s ease-out;
 }
 
-.rmdb-searchbar-input:hover {
+.input:hover {
   box-shadow: 0 0 0 1px #666666;
 }
 
-.rmdb-searchbar-input:focus {
+.input:focus {
   outline: none;
   box-shadow: 0 0 0 3px #c3c3c3;
 }
 
-.rmdb-searchbar-submit {
+.submitBtn {
   position: absolute;
   top: 0;
   right: 0;
@@ -54,39 +54,39 @@
   border: 0;
 }
 
-.rmdb-searchbar-submit:hover,
-.rmdb-searchbar-submit:focus {
+.submitBtn:hover,
+.submitBtn:focus {
   outline: none;
   color: #353535;
   background-color: #c3c3c3;
 }
 
-.rmdb-searchbar-submit:active {
+.submitBtn:active {
   color: #222222;
   background-color: #666666;
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-searchbar {
+  .wrapper {
     font-size: 2rem;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .rmdb-searchbar {
+  .wrapper {
     font-size: 1.5rem;
   }
 
-  .rmdb-searchbar-icon {
+  .icon {
     display: none;
   }
 
-  .rmdb-searchbar-input {
+  .input {
     padding-left: 0.75em;
     margin-left: 0;
   }
 
-  .rmdb-searchbar-input:focus {
+  .input:focus {
     box-shadow: 0 0 0 2px #c3c3c3;
   }
 }

@@ -6,6 +6,7 @@
 }
 
 .list {
+  composes: container from global;
   display: flex;
   flex-wrap: wrap;
   list-style: none;

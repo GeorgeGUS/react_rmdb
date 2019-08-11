@@ -1,8 +1,9 @@
-.rmdb-header {
+.wrapper {
   background-color: #1c1c1c;
 }
 
-.rmdb-header-content {
+.content {
+  composes: container from global;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,29 +11,29 @@
   padding-bottom: 20px;
 }
 
-.rmdb-header-content img {
+.content img {
   display: block;
 }
 
-.rmdb-logo {
+.logo {
   width: 300px;
 }
 
-.rmdb-tmdb-logo {
+.tmdbLogo {
   width: 120px;
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-logo {
+  .logo {
     width: 150px;
   }
 
-  .rmdb-header-content {
+  .content {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 
-  .rmdb-tmdb-logo {
+  .tmdbLogo {
     width: 80px;
   }
 }

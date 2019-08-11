@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import styles from './header.module.css';
 
 const Header = () => {
   return (
-    <header className='rmdb-header'>
-      <div className='rmdb-header-content rmdb-container'>
+    <header className={styles.wrapper}>
+      <div className={styles.content}>
         <Link to='/'>
           <img
-            className='rmdb-logo'
+            className={styles.logo}
             src={`${process.env.PUBLIC_URL}/images/reactMovie_logo.png`}
-            alt='rmdb-logo'
+            alt='site-logo'
           />
         </Link>
         <a
@@ -19,7 +19,7 @@ const Header = () => {
           rel='noopener noreferrer'
         >
           <img
-            className='rmdb-tmdb-logo'
+            className={styles.tmdbLogo}
             src={`${process.env.PUBLIC_URL}/images/movie-db-logo.svg`}
             alt='tmdb-logo'
           />
