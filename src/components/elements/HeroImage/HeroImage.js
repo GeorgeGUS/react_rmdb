@@ -7,7 +7,7 @@ const HeroImage = ({ image, title, text }) => {
   };
   return (
     <div className={styles.block} style={bgImage}>
-      <div className={styles.container}>
+      <div className={styles.wrapper}>
         <div className={styles.content}>
           <h1>{title}</h1>
           <p>{text}</p>

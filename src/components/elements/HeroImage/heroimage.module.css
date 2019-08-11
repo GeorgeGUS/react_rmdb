@@ -16,7 +16,7 @@
   background-image: linear-gradient(#0000 40%, #000a);
 }
 
-.container {
+.wrapper {
   composes: container from global;
   /* position needs to put over gradient */
   position: relative;
