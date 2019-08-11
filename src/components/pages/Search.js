@@ -14,7 +14,7 @@ const Search = ({
   movies,
   currentPage,
   totalPages,
-  updateItems,
+  loadMoreItems,
   searchTerm
 }) => {
   const title = `Search results for "${searchTerm}"`;
@@ -29,7 +29,7 @@ const Search = ({
       </Grid>
       {loading && <Spinner />}
       {currentPage < totalPages && !loading && (
-        <LoadMoreBtn text='Load More' onClick={updateItems} />
+        <LoadMoreBtn text='Load More' onClick={loadMoreItems} />
       )}
     </Page>
   );

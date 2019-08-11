@@ -11,7 +11,7 @@ import { MovieThumb } from '../elements/Thumbs';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import Spinner from '../elements/Spinner/Spinner';
 
-const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
+const Home = ({ loading, movies, currentPage, totalPages, loadMoreItems }) => {
   const heroImage = movies.length > 0 ? movies[0] : {};
   return (
     <Page>
@@ -33,7 +33,7 @@ const Home = ({ loading, movies, currentPage, totalPages, updateItems }) => {
       </Grid>
       {loading && <Spinner />}
       {currentPage < totalPages && !loading && (
-        <LoadMoreBtn text='Load More' onClick={updateItems} />
+        <LoadMoreBtn text='Load More' onClick={loadMoreItems} />
       )}
     </Page>
   );

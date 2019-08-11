@@ -52,13 +52,23 @@ const RMDBService = (Wrapper, queryParams) => {
       }
     };
 
-    updateItems = (loadMore, newSearchTerm) => {
+    updateItems = newSearchTerm => {
       this.setState(
-        ({ movies, searchTerm, currentPage }) => ({
-          movies: loadMore ? [...movies] : [],
+        ({ searchTerm }) => ({
           loading: true,
-          searchTerm: loadMore ? searchTerm : newSearchTerm,
-          currentPage: loadMore ? currentPage + 1 : 1
+          movies: [],
+          searchTerm: newSearchTerm || searchTerm,
+          currentPage: 1
+        }),
+        this.fetchItems
+      );
+    };
+
+    loadMoreItems = () => {
+      this.setState(
+        ({ currentPage }) => ({
+          loading: true,
+          currentPage: currentPage + 1
         }),
         this.fetchItems
       );
@@ -69,7 +79,7 @@ const RMDBService = (Wrapper, queryParams) => {
         <Wrapper
           {...this.state}
           {...this.props}
-          updateItems={this.updateItems}
+          loadMoreItems={this.loadMoreItems}
         />
       );
     }
