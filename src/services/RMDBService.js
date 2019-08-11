@@ -12,29 +12,32 @@ const RMDBService = (Wrapper, queryParams) => {
       searchTerm: this.props.match.params.searchTerm || ''
     };
 
-    createEndpoint = ({ type, typeId, options }) => () => {
+    createEndpoint = ({ type, typeId, options }) => {
       const { id } = this.props.match.params;
       const { currentPage, searchTerm } = this.state;
       return `${API_URL}${type}/${typeId ||
         id}?api_key=${API_KEY}&language=${LANG}&append_to_response=${options}&query=${searchTerm}&page=${currentPage}`;
     };
 
-    _endpoint = this.createEndpoint(queryParams);
-
     componentDidMount() {
       this.fetchItems();
     }
 
     componentDidUpdate(prevProps) {
-      const { searchTerm } = this.props.match.params;
-      if (prevProps.match.params.searchTerm !== searchTerm) {
-        this.updateItems(false, searchTerm);
+      const { searchTerm, id } = this.props.match.params;
+      if (
+        prevProps.match.params.searchTerm !== searchTerm ||
+        prevProps.match.params.id !== id
+      ) {
+        this.updateItems(searchTerm);
       }
     }
 
     fetchItems = async () => {
       try {
-        const response = await (await fetch(this._endpoint())).json();
+        const response = await (await fetch(
+          this.createEndpoint(queryParams)
+        )).json();
         if (response.status_code) {
           this.setState({ loading: false });
         } else if (response.results) {
