@@ -15,7 +15,7 @@ export const Footer = ({ children }) => (
 );
 
 const Info = ({ style, thumb, title, children }) => (
-  <div className={styles.wrapper} style={style}>
+  <div className={styles.block} style={style}>
     <div className={styles.content}>
       <div className={styles.thumb}>
         <InfoThumb imagePath={thumb} alt={title} />

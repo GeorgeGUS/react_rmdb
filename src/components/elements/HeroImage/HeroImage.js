@@ -6,7 +6,7 @@ const HeroImage = ({ image, title, text }) => {
     backgroundImage: `url('${image}')`
   };
   return (
-    <div className={styles.wrapper} style={bgImage}>
+    <div className={styles.block} style={bgImage}>
       <div className={styles.container}>
         <div className={styles.content}>
           <h1>{title}</h1>

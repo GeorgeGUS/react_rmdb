@@ -7,7 +7,7 @@ const MovieThumb = ({ movie }) => {
   const { id, title, poster_path, character, release_date } = movie;
   const year = release_date && new Date(release_date).getFullYear();
   return (
-    <Link to={`/movie/${id}`} className={styles.wrapper}>
+    <Link to={`/movie/${id}`} className={styles.block}>
       <img
         className={styles.image}
         src={getThumbUrl(poster_path)}

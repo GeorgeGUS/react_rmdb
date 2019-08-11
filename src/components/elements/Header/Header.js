@@ -4,7 +4,7 @@ import styles from './header.module.css';
 
 const Header = () => {
   return (
-    <header className={styles.wrapper}>
+    <header className={styles.block}>
       <div className={styles.content}>
         <Link to='/'>
           <img

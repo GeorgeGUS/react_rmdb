@@ -10,7 +10,7 @@ export const Item = ({ icon, children }) => (
 );
 
 const InfoBar = ({ children }) => (
-  <div className={styles.wrapper}>
+  <div className={styles.block}>
     <ul className={styles.list}>{children}</ul>
   </div>
 );

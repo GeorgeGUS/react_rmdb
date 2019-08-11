@@ -3,7 +3,7 @@ import styles from './rating.module.css';
 
 const Rating = ({ value }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.block}>
       <meter
         className={styles.scale}
         min='0'

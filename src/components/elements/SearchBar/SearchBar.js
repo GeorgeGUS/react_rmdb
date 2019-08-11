@@ -39,7 +39,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.block}>
         <div className='container'>
           <form className={styles.form} onSubmit={this.handleSubmit}>
             <label className={styles.label}>

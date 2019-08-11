@@ -5,7 +5,7 @@ import styles from './breadcrumbs.module.css';
 
 const Breadcrumbs = ({ title }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.block}>
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link to='/'>Home</Link>

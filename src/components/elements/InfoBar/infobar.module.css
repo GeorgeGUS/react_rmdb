@@ -1,4 +1,4 @@
-.wrapper {
+.block {
   background-color: #1c1c1c;
   position: relative;
   padding: 20px 0;
@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .wrapper {
+  .block {
     padding: 10px 0;
   }
 

@@ -1,4 +1,4 @@
-.wrapper {
+.block {
   composes: fadeIn from global;
   position: relative;
   background-color: #1c1c1c;
@@ -6,7 +6,7 @@
   background-position: center;
 }
 
-.wrapper::before {
+.block::before {
   content: '';
   position: absolute;
   top: 0;

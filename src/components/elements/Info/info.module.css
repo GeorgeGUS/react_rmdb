@@ -1,4 +1,4 @@
-.wrapper {
+.block {
   composes: fadeIn from global;
   background-color: #000;
   background-size: cover;
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 870px) {
-  .wrapper {
+  .block {
     min-height: 450px;
   }
 
@@ -70,7 +70,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .wrapper {
+  .block {
     min-height: 250px;
     padding: 20px 0;
   }
@@ -103,7 +103,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .wrapper {
+  .block {
     min-height: 340px;
   }
 

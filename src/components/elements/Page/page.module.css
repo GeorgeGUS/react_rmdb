@@ -1,9 +1,9 @@
-.wrapper {
+.block {
   margin-bottom: 5rem;
 }
 
 @media screen and (max-width: 500px) {
-  .wrapper {
+  .block {
     margin-bottom: 3.5rem;
   }
 }
